@@ -4,14 +4,29 @@
 </head>
 
 <body>
+  {{> notification}}
   <div class="container-fluid">
     {{> header}}
 
+
     {{renderPage}}
+    {{> authTabs}}
   </div>
 </body>
 
+<template name='notification'>
+ <div class="alert alert-block hide navbar-fixed-top">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <h4 class="alert-heading"></h4>
+  <div class="message"></div>
+</div>
+</template>
+
 <template name="header">
   {{loginButtons}}
+</template>
+
+<template name='homepage'>
+  homepage
 </template>
 

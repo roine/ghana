@@ -4,7 +4,7 @@
     "basePackages": {
       "jquery-ui-bootstrap": {},
       "router": {},
-      "scss": {}
+      "modernizr-meteor": {}
     },
     "packages": {
       "jquery-ui-bootstrap": {
@@ -17,10 +17,10 @@
         "tag": "v0.5.1",
         "commit": "32e377c7703bb119acccc859fc7296882903cbe7"
       },
-      "scss": {
-        "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.5.1.1",
-        "commit": "6b142df6fc11f026e4bff1d6828055b3d84ce608"
+      "modernizr-meteor": {
+        "git": "https://github.com/ckir/modernizr-meteor.git",
+        "tag": "v2.6.2",
+        "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",

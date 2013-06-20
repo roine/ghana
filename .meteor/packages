@@ -9,7 +9,7 @@ preserve-inputs
 email
 accounts-facebook
 bootstrap
-accounts-ui
 accounts-password
 accounts-base
 accounts-twitter
+accounts-ui
