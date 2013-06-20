@@ -1,4 +1,4 @@
-
+'use strict';
 // To make the function global either add this in front of the function reference or just dont add var
 // this.create or create
 user_exists = function(userId) {
@@ -56,7 +56,7 @@ Template.sign_up.events({
       else{
         openAlert({
         title:'You successfuly subscribed!',
-        message:'We also have logged you in, isn\'t it wonderful?!',
+        message:'We also have logged you in, isn\'t it wonderful?! Took us '+pluralize(Math.round(Math.random()*10), 'engineer'),
         type:'success',
         lifetime:10
       })
@@ -65,7 +65,7 @@ Template.sign_up.events({
   }
 });
 
-hasEmptyValue = function(obj){
+hasEmptyValue = function(obj) {
   for(i in obj){
     if(obj[i] === '') return true;
   }
@@ -73,7 +73,7 @@ hasEmptyValue = function(obj){
 }
 
 // obj = {message, title, type, lifetime}, lifetime is in second
-openAlert = function(obj){
+openAlert = function(obj) {
   $('.alert').find('.alert-heading').html(obj.title).end()
   .find('.message')
   .html(obj.message).end()
@@ -85,7 +85,16 @@ openAlert = function(obj){
   }
 }
 
-closeAlert = function(){
+closeAlert = function() {
   $('.alert .close').closest('.alert').removeClass('puffIn').addClass('puffOut');
+}
+
+pluralize = function(count, word) {
+  if(count > 1){
+    return count+' '+word+'s';
+  }
+  else{
+    return count+' '+word;
+  }
 }
 
