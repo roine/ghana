@@ -20,11 +20,33 @@
 </template>
 
 <template name="header">
-  {{loginButtons}}
+  {{#if currentUser}}
+    {{> loggedInBar}}
+    {{else}}
+    {{> loggedOutBar}}
+    {{/if}}
 </template>
 
 <template name='homepage'>
   homepage
+</template>
+
+<template name='loggedOutBar'>
+  logged out
+</template>
+
+<template name='loggedInBar'>
+  logged in
+  <div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#">{{currentUser.profile.front_name}}</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </div>
+</div>
 </template>
 
 

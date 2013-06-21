@@ -16,3 +16,8 @@ ghana
  - https://github.com/usablica/intro.js
  - https://github.com/miniMAC/magic (CSS3 Animations with special effects)
  - https://github.com/madrobby/keymaster (A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.)
+
+
+##Roadmap
+
+[trello](https://trello.com/board/ghana/51c429250f27db512d0024cd)
