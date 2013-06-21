@@ -3,8 +3,8 @@ Meteor.Router.add({
   '/': 'homepage',
   '/:userId': {
     to: 'user_profile',
-    and: function(userId) {
-      Session.set('userId', userId);
+    and: function(slug) {
+      Session.set('slug', slug);
       return 'user_profile';
     }
   },
@@ -17,23 +17,15 @@ Meteor.Router.add({
 });
 
 Meteor.Router.filters({
-  userExists: function(page) {
-    if( user_exists() ){
+  'checkLoggedIn': function(page) {
+    if (Meteor.loggingIn()) {
+      return 'loading';
+    } else if (Meteor.user()) {
       return page;
-    }
-    else{
-      Session.set('type', 'User');
-      return 'not_found';
-    }
-  },
-  loggedIn: function(page){
-    if(Meteor.user()){
-      return page;
-    }
-    else{
-      return 'sign_in';
+    } else {
+      return 'authTabs';
     }
   }
 });
 
-Meteor.Router.filter('userExists', { only: 'user_profile' });
+Meteor.Router.filter('checkLoggedIn', {only: 'homepage'});

@@ -1,13 +1,12 @@
 'use strict';
-// To make the function global either add this in front of the function reference or just dont add var
-// this.create or create
-user_exists = function(userId) {
+// add this in front to make it global
+this.user_exists = function(userId) {
   userId = userId || Session.get('userId');
   // !![] would return true so it's converted to string then to boolean
   return !!Meteor.users.find({'_id': userId}).fetch().join('');
 }
 
-get_user = function(userId) {
+this.get_user = function(userId) {
   userId = userId || Session.get('userId');
   return Meteor.users.find({'_id': userId}).fetch();
 }
@@ -20,8 +19,7 @@ Template.authTabs.events({
 })
 Template.notification.events({
   'click .close': function(event) {
-    var self = event.currentTarget;
-    $(self).closest('.alert').removeClass('puffIn').addClass('puffOut');
+    closeAlert();
     return false;
   }
 })
@@ -31,7 +29,7 @@ Template.sign_up.events({
     var datas = $(self).serializeArray(),
     newObj = {};
     event.preventDefault();
-    for(i in datas){
+    for(var i in datas){
       newObj[datas[i].name] = datas[i].value;
     }
 
@@ -55,29 +53,29 @@ Template.sign_up.events({
       }
       else{
         openAlert({
-        title:'You successfuly subscribed!',
-        message:'We also have logged you in, isn\'t it wonderful?! Took us '+pluralize(Math.round(Math.random()*10), 'engineer'),
-        type:'success',
-        lifetime:10
-      })
+          title:'You successfuly subscribed!',
+          message:'We also have logged you in, isn\'t it wonderful?! Took us '+pluralize(Math.round(Math.random()*10), 'engineer'),
+          type:'success',
+          lifetime:10
+        })
       }
     })
   }
 });
 
-hasEmptyValue = function(obj) {
-  for(i in obj){
+this.hasEmptyValue = function(obj) {
+  for(var i in obj){
     if(obj[i] === '') return true;
   }
   return false;
 }
 
 // obj = {message, title, type, lifetime}, lifetime is in second
-openAlert = function(obj) {
+this.openAlert = function(obj) {
   $('.alert').find('.alert-heading').html(obj.title).end()
   .find('.message')
   .html(obj.message).end()
-  .removeClass('puffOut hide alert-error alert-success alert-info')
+  .removeClass('slideUp hide alert-error alert-success alert-info')
   .addClass('magictime puffIn alert-'+obj.type);
 
   if(obj.lifetime){
@@ -85,11 +83,14 @@ openAlert = function(obj) {
   }
 }
 
-closeAlert = function() {
-  $('.alert .close').closest('.alert').removeClass('puffIn').addClass('puffOut');
+this.closeAlert = function() {
+  var $alert = $('.alert .close').closest('.alert')
+  $alert.removeClass('puffIn').addClass('slideUp');
+  // 600ms is  the speed of the sliding animation cf: magic.css
+  setTimeout(function(){$alert.addClass('hide')},600);
 }
 
-pluralize = function(count, word) {
+this.pluralize = function(count, word) {
   if(count > 1){
     return count+' '+word+'s';
   }
@@ -97,4 +98,6 @@ pluralize = function(count, word) {
     return count+' '+word;
   }
 }
+
+
 
