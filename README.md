@@ -4,6 +4,7 @@ ghana
 ##Resources
 
  - https://github.com/paulkinzett/toolbar (A tooltip style toolbar jQuery plugin)
+ - http://vitalets.github.io/x-editable/ (in-place editing with Twitter Bootstrap, jQuery UI or pure jQuery)
 
 ##Maybe Resources
 

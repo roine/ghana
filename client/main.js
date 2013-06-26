@@ -23,6 +23,10 @@ Template.loggedInBar.events({
     $(self).addClass('active')
   }
 });
+Template.loggedInBar.rendered = function () {
+  $('.nav li').removeClass('active');
+  $('.nav [data-view='+Meteor.Router._page+']').addClass('active');
+};
 
 this.hasEmptyValue = function(obj) {
   for(var i in obj){

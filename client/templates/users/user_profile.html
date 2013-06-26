@@ -1,8 +1,37 @@
 <template name="user_profile">
-  {{#if isCurrentUser}}
-  own
-  {{else}}
-  {{user.profile.front_name}}
-  {{/if}}
+  <div class="span3 dropshadow">
+    <div class="profile_picture">
+      <img src="http://dribbble.s3.amazonaws.com/users/41613/avatars/small/gravatar.jpg?1370459234">
+    </div>
+    <div class="personal_info padding-20">
+     {{#if isCurrentUser}}
+     <div class="edit">Edit Profile</div>
+     {{/if}}
+     <h2 class='capitalize' data-name='front_name'>{{user.profile.front_name}}</h2>
+     <table class="table">
+      <tbody>
+        {{#if user.profile.real_name}}
+        <tr>
+          <td>Real Name</td>
+          <td data-name='real_name'>{{user.profile.real_name}}</td>
+        </tr>
+        {{/if}}
+        {{#if user.profile.website}}
+        <tr>
+          <td>Website</td>
+          <td>{{user.profile.website}}</td>
+        </tr>
+        <tr>
+          {{/if}}
+          <td>Points</td>
+          <td>{{user.profile.points}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="span9  dropshadow">
+
+</div>
 </template>
 

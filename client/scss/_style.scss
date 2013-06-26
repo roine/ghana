@@ -1,0 +1,96 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+// helper for grid
+.show-grid [class^=span]{
+  border:1px solid red;
+}
+body{
+  background: -webkit-radial-gradient(#e74c3c, #c0392b);
+  background: -moz-radial-gradient(#e74c3c, #c0392b);
+  background: -o-radial-gradient(#e74c3c, #c0392b);
+  background: -ms-radial-gradient(#e74c3c, #c0392b);
+  background:radial-gradient(#e74c3c, #c0392b);
+  -webkit-background-size:100%, 100%;
+  -moz-background-size:100%, 100%;
+  background-size:100%, 100%;
+  background-repeat: no-repeat;
+}
+
+.maxime{
+  max-width:$max-container-width;
+  margin:0 auto;
+}
+.capitalize{
+  text-transform:capitalize;
+}
+
+
+.row, .row-fluid{
+  font-size:16px;
+  line-height:1.5em;
+  font-family:'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+// helper
+
+.padding-20{
+  padding:20px;
+}
+.dropshadow{
+  background:white;
+  box-shadow:0 2px 3px 2px rgba(0, 0, 0, 0.1);
+}
+
+//
+
+.profile_picture{
+  text-align:center;
+  @media only screen and(max-width:766px){
+    display:none;
+  }
+  img{
+    width:100%;
+    height:auto;
+  }
+
+}
+.personal_info{
+  position:relative;
+  overflow:hidden;
+  .edit{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px;
+
+    background:#3498DB;
+    background: -webkit-linear-gradient(top, #3498DB, #3498DB);
+    background: -moz-linear-gradient(top, #3498DB, #3498DB);
+    background: -o-linear-gradient(top, #3498DB, #3498DB);
+    background: -ms-linear-gradient(top, #3498DB, #3498DB);
+    background: linear-gradient(top, #3498DB, #3498DB);
+
+    -webkit-box-shadow: 0 9px 7px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 9px 7px -4px rgba(0, 0, 0, 0.2);
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-transition:top .5s ease;
+    -moz-transition:top .5s ease;
+    -o-transition:top .5s ease;
+    -ms-transition:top .5s ease;
+    transition:top .5s ease;
+  }
+  h2{
+    text-align:center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

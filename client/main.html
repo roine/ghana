@@ -5,9 +5,11 @@
 
 <body>
   {{> notification}}
-  <div class="container-fluid">
+  <div class="container-fluid maxime">
     {{> header}}
-    {{#isolate}} {{renderPage}} {{/isolate}}
+    <div class="row-fluid">
+      {{#isolate}} {{renderPage}} {{/isolate}}
+    </div>
   </div>
 </body>
 
@@ -46,11 +48,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="/">Ghana</a>
+        <a class="brand" href="/" data-view='homepage'>Ghana</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a href="/{{currentUser.profile.front_name}}">Profile</a></li>
-            <li><a href="#">Link</a></li>
+            <li class="" data-view='user_profile'><a href="/{{currentUser.profile.front_name}}">Profile</a></li>
+            <li><a href="#" data-view=''>Link</a></li>
             <li><a href="#">Link</a></li>
           </ul>
         </div>
