@@ -2,6 +2,7 @@
   "packages": {
     "jquery-ui-bootstrap": {},
     "router": {},
-    "modernizr-meteor": {}
+    "modernizr-meteor": {},
+    "transitioner": {}
   }
 }

@@ -21,10 +21,10 @@
 
 <template name="header">
   {{#if currentUser}}
-    {{> loggedInBar}}
-    {{else}}
-    {{> loggedOutBar}}
-    {{/if}}
+  {{> loggedInBar}}
+  {{else}}
+  {{> loggedOutBar}}
+  {{/if}}
 </template>
 
 <template name='homepage'>
@@ -36,17 +36,27 @@
 </template>
 
 <template name='loggedInBar'>
-  logged in
-  <div class="navbar navbar-static-top">
-  <div class="navbar-inner">
-    <a class="brand" href="#">{{currentUser.profile.front_name}}</a>
-    <ul class="nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
+  logged in {{currentUser.profile.front_name}}
+  <div class="navbar ">
+    <div class="navbar-inner">
+      <div class="container">
+        {{! display the collapsed menu in small screen }}
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Ghana</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="/{{currentUser.profile.front_name}}">Profile</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 

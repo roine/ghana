@@ -3,4 +3,3 @@ Template.not_found.helpers({
     return Session.get('type');
   }
 });
-

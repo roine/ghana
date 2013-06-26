@@ -4,7 +4,8 @@
     "basePackages": {
       "jquery-ui-bootstrap": {},
       "router": {},
-      "modernizr-meteor": {}
+      "modernizr-meteor": {},
+      "transitioner": {}
     },
     "packages": {
       "jquery-ui-bootstrap": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/ckir/modernizr-meteor.git",
         "tag": "v2.6.2",
         "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
+      },
+      "transitioner": {
+        "git": "https://github.com/tmeasday/meteor-transitioner.git",
+        "tag": "v0.2.4",
+        "commit": "33ca36ff84e9b9b7a500ec86e2332245b998ef3e"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
