@@ -40,5 +40,5 @@ ghana
 
 Arguments | Type | Required | Default | Note
 ------|-----|-----|-----|----
-Timestamp | String/Integer | Yes | g | The timestamp must be in millisecond (13 chars)
+Timestamp | String/Integer | Yes |  | The timestamp must be in millisecond (13 chars)
 Date format | String | No | Will return a length date between now and the defined date | see [doc](http://momentjs.com/docs/
