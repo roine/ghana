@@ -37,6 +37,12 @@ ghana
 
 ####dateToString
 
+dog | bird | cat
+----|------|----
+foo | foo  | foo
+bar | bar  | bar
+baz | baz  | baz
+
 Arguments | Type | Required | Default | Note
  --- | --- | --- | --- | --
 Timestamp | String/Integer | Yes | | The timestamp must be in millisecond (13 chars)
