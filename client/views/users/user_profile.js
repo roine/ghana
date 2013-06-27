@@ -1,20 +1,18 @@
-
-function updateProfile(response, newValue){
-
-
-}
+'use strict';
 
 Template.user_profile.helpers({
   user:function() {
     var user = Meteor.users.find({'profile.front_name':Session.get('slug')}).fetch();
-    // is an empty array
-    if(!isFinite(user))
-     return user[0];
- },
- isCurrentUser: function() {
-  if(!Template.user_profile._tmpl_data.helpers.user()) return false;
-  return Template.user_profile._tmpl_data.helpers.user()._id === Meteor.userId();
-}
+
+    // is not an empty array
+    if(!isFinite(user)){
+      return user[0];
+    }
+  },
+  isCurrentUser: function() {
+    if(!Template.user_profile._tmpl_data.helpers.user()) return false;
+    return Template.user_profile._tmpl_data.helpers.user()._id === Meteor.userId();
+  }
 });
 
 Template.user_profile.events({
@@ -63,8 +61,8 @@ function updateProfile(e, newValue){
   var name = $(this).data('name');
   var update = {};
   update[name] = newValue;
-  // uniqueField is set in lib/collections.js
 
+  // uniqueField is set in lib/collections.js
   if(~$.inArray(name, uniqueField.users)){
 
     if(Meteor.users.find(update).count()){
@@ -76,13 +74,15 @@ function updateProfile(e, newValue){
       return false;
     }
   }
-  Meteor.users.update(Meteor.userId(), {$set:update}, function(){
-    openAlert({
-        title: 'Success',
-        message: 'You successfuly updated your profile!',
-        type: 'success'
-      });
-    Meteor.Router.to('/'+newValue+'/edit')
-  })
+
+  Meteor.users.update(Meteor.userId(), {$set:update}, user_updated)
 }
 
+function user_updated(){
+  openAlert({
+    title: 'Success',
+    message: 'You successfuly updated your profile!',
+    type: 'success'
+  });
+  Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
+}

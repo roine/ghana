@@ -43,7 +43,7 @@ ghana
 Arguments | Type | Required | Default | Note
 ------|-----|-----|-----|----
 Timestamp | String/Integer | Yes |  | The timestamp must be in millisecond (13 chars)
-Date format | String | No | Will return a length date between now and the defined date | see [doc](http://momentjs.com/docs/
+Date format | String | No | Will return a length date between now and the defined date | see [doc](http://momentjs.com/docs/)
 Example:
 
     {{dateToString user.created_at}} // 6 days ago
