@@ -5,7 +5,9 @@
       "jquery-ui-bootstrap": {},
       "router": {},
       "modernizr-meteor": {},
-      "moment": {}
+      "moment": {},
+      "x-editable-bootstrap": {},
+      "font-awesome": {}
     },
     "packages": {
       "jquery-ui-bootstrap": {
@@ -27,6 +29,16 @@
         "git": "https://github.com/possibilities/meteor-moment.git",
         "tag": "v1.7.0",
         "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
+      },
+      "x-editable-bootstrap": {
+        "git": "https://github.com/nate-strauser/meteor-x-editable-bootstrap.git",
+        "tag": "v1.4.4",
+        "commit": "d6852784a73f417710cbd58f42d97389dfbf37a3"
+      },
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v3.2.0",
+        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",

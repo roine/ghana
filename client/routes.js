@@ -12,6 +12,20 @@ Meteor.Router.add({
       return 'user_profile';
     }
   },
+  '/:userId/edit': {
+    to: 'user_profile',
+    and: function(slug){
+      if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
+        Session.set('slug', slug);
+        addClass('user_profile_edit');
+        return 'user_profile';
+      }
+      else{
+        addClass('no_right');
+        return 'no_right';
+      }
+    }
+  },
   'sign_in': function(){
     addClass('sign_in');
     return 'sign_in';
@@ -38,17 +52,4 @@ Meteor.Router.filters({
 
 Meteor.Router.filter('checkLoggedIn', {only: 'homepage'});
 
-function addClass(view){
-  $('body').removeClass(function(index, classes){
-    var regex = /\bview-\w+/gi;
-    return classes.match(regex) && classes.match(regex).join(' ');
-  })
-  .addClass('view-'+view);
-  addActive(view)
-}
-
-function addActive(view){
-  $('.nav li').removeClass('active');
-  $('.nav [data-view='+view+']').addClass('active');
-}
 

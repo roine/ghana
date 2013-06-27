@@ -5,11 +5,11 @@
 }
 body{
   background:white;
-  -webkit-transition:backgroundImage 1s ease;
-  -moz-transition:backgroundImage 1s ease;
-  -o-transition:backgroundImage 1s ease;
-  -ms-transition:backgroundImage 1s ease;
-  transition:backgroundImage 1s ease;
+  -webkit-transition:all 1s ease;
+  -moz-transition:all 1s ease;
+  -o-transition:all 1s ease;
+  -ms-transition:all 1s ease;
+  transition:all 1s ease;
 
   background-size:100%, 100%;
   -webkit-background-size:100%, 100%;
@@ -19,11 +19,18 @@ body{
     background:white
   }
   &.view-user_profile{
-    background-image: -webkit-radial-gradient(#e74c3c, #c0392b);
-    background-image: -moz-radial-gradient(#e74c3c, #c0392b);
-    background-image: -o-radial-gradient(#e74c3c, #c0392b);
-    background-image: -ms-radial-gradient(#e74c3c, #c0392b);
-    background-image:radial-gradient(#e74c3c, #c0392b);
+    background: -webkit-radial-gradient(#e74c3c, #c0392b);
+    background: -moz-radial-gradient(#e74c3c, #c0392b);
+    background: -o-radial-gradient(#e74c3c, #c0392b);
+    background: -ms-radial-gradient(#e74c3c, #c0392b);
+    background:radial-gradient(#e74c3c, #c0392b);
+  }
+  &.view-user_profile_edit{
+    background: -webkit-radial-gradient(#3498db, #2980b9);
+    background: -moz-radial-gradient(#3498db, #2980b9);
+    background: -o-radial-gradient(#3498db, #2980b9);
+    background: -ms-radial-gradient(#3498db, #2980b9);
+    background:radial-gradient(#3498db, #2980b9);
   }
 }
 
@@ -56,18 +63,22 @@ body{
 
 .profile_picture{
   text-align:center;
+  position: relative;
+  z-index: 10;
   @media only screen and(max-width:766px){
     display:none;
   }
-  img{
-    width:100%;
-    height:auto;
+  .imgPlaceholder{
+    background:#D6D6D6;
+    i{
+      color:white;
+      font-size: 15em;
+    }
   }
 
 }
 .personal_info{
   position:relative;
-  overflow:hidden;
   .edit{
     position: absolute;
     top: 0;

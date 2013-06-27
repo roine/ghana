@@ -25,15 +25,17 @@ ghana
 
 ## DOC
 
-  var option = {
-    title:'',
-    message:'',
-    type:'info', // error, success, warning, info
-    lifetime:3 // time in second before to collapse the alert
-  }
-  openAlert(options);
 
-###Handlebars helper
+    var option = {
+      title:'',
+      message:'',
+      type:'info', // error, success, warning, info
+      lifetime:3 // time in second before to collapse the alert
+    }
+    openAlert(options);
+
+
+###Handlebarsjs helpers
 
 ####dateToString
 
@@ -42,3 +44,7 @@ Arguments | Type | Required | Default | Note
 ------|-----|-----|-----|----
 Timestamp | String/Integer | Yes |  | The timestamp must be in millisecond (13 chars)
 Date format | String | No | Will return a length date between now and the defined date | see [doc](http://momentjs.com/docs/
+Example:
+
+    {{dateToString user.created_at}} // 6 days ago
+    {{dateToString user.created_at 'YYYY'}} // 2013

@@ -7,11 +7,11 @@
 /* line 6, ../scss/_style.scss */
 body {
   background: white;
-  -webkit-transition: backgroundImage 1s ease;
-  -moz-transition: backgroundImage 1s ease;
-  -o-transition: backgroundImage 1s ease;
-  -ms-transition: backgroundImage 1s ease;
-  transition: backgroundImage 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
   background-size: 100%, 100%;
   -webkit-background-size: 100%, 100%;
   -moz-background-size: 100%, 100%;
@@ -23,64 +23,77 @@ body.view-homepage {
 }
 /* line 21, ../scss/_style.scss */
 body.view-user_profile {
-  background-image: -webkit-radial-gradient(#e74c3c, #c0392b);
-  background-image: -moz-radial-gradient(#e74c3c, #c0392b);
-  background-image: -o-radial-gradient(#e74c3c, #c0392b);
-  background-image: -ms-radial-gradient(#e74c3c, #c0392b);
-  background-image: radial-gradient(#e74c3c, #c0392b);
+  background: -webkit-radial-gradient(#e74c3c, #c0392b);
+  background: -moz-radial-gradient(#e74c3c, #c0392b);
+  background: -o-radial-gradient(#e74c3c, #c0392b);
+  background: -ms-radial-gradient(#e74c3c, #c0392b);
+  background: radial-gradient(#e74c3c, #c0392b);
+}
+/* line 28, ../scss/_style.scss */
+body.view-user_profile_edit {
+  background: -webkit-radial-gradient(#3498db, #2980b9);
+  background: -moz-radial-gradient(#3498db, #2980b9);
+  background: -o-radial-gradient(#3498db, #2980b9);
+  background: -ms-radial-gradient(#3498db, #2980b9);
+  background: radial-gradient(#3498db, #2980b9);
 }
 
-/* line 30, ../scss/_style.scss */
+/* line 37, ../scss/_style.scss */
 .maxime {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* line 34, ../scss/_style.scss */
+/* line 41, ../scss/_style.scss */
 .capitalize {
   text-transform: capitalize;
 }
 
-/* line 39, ../scss/_style.scss */
+/* line 46, ../scss/_style.scss */
 .row, .row-fluid {
   font-size: 16px;
   line-height: 1.5em;
   font-family: 'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 47, ../scss/_style.scss */
+/* line 54, ../scss/_style.scss */
 .padding-20 {
   padding: 20px;
 }
 
-/* line 50, ../scss/_style.scss */
+/* line 57, ../scss/_style.scss */
 .dropshadow {
   background: white;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* line 57, ../scss/_style.scss */
+/* line 64, ../scss/_style.scss */
 .profile_picture {
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 @media only screen and (max-width: 766px) {
-  /* line 57, ../scss/_style.scss */
+  /* line 64, ../scss/_style.scss */
   .profile_picture {
     display: none;
   }
 }
-/* line 62, ../scss/_style.scss */
-.profile_picture img {
-  width: 100%;
-  height: auto;
+/* line 71, ../scss/_style.scss */
+.profile_picture .imgPlaceholder {
+  background: #D6D6D6;
+}
+/* line 73, ../scss/_style.scss */
+.profile_picture .imgPlaceholder i {
+  color: white;
+  font-size: 15em;
 }
 
-/* line 68, ../scss/_style.scss */
+/* line 80, ../scss/_style.scss */
 .personal_info {
   position: relative;
-  overflow: hidden;
 }
-/* line 71, ../scss/_style.scss */
+/* line 82, ../scss/_style.scss */
 .personal_info .edit {
   position: absolute;
   top: 0;
@@ -109,7 +122,7 @@ body.view-user_profile {
   -ms-transition: top .5s ease;
   transition: top .5s ease;
 }
-/* line 103, ../scss/_style.scss */
+/* line 114, ../scss/_style.scss */
 .personal_info h2 {
   text-align: center;
   text-overflow: ellipsis;

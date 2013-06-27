@@ -3,6 +3,8 @@
     "jquery-ui-bootstrap": {},
     "router": {},
     "modernizr-meteor": {},
-    "moment": {}
+    "moment": {},
+    "x-editable-bootstrap": {},
+    "font-awesome": {}
   }
 }
