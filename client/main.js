@@ -21,6 +21,14 @@ Template.loggedInBar.events({
   'click navbar a': function(event){
     var self = event.currentTarget;
     $(self).addClass('active')
+  },
+  'click .logout': function(){
+    Meteor.logout();
+    Meteor.Router.to('/');
+    openAlert({
+      title:'Au revoir',
+      message:'You have been logged out!'
+    });
   }
 });
 Template.loggedInBar.rendered = function () {
@@ -37,15 +45,20 @@ this.hasEmptyValue = function(obj) {
 
 // obj = {message, title, type, lifetime}, lifetime is in second
 this.openAlert = function(obj) {
-  $('.alert').find('.alert-heading').html(obj.title).end()
+  var opt = {
+    title:'',
+    message:'',
+    type:'info',
+    lifetime:3
+  };
+  $.extend(opt, obj);
+  $('.alert').find('.alert-heading').html(opt.title).end()
   .find('.message')
-  .html(obj.message).end()
+  .html(opt.message).end()
   .removeClass('slideUp hide alert-error alert-success alert-info')
-  .addClass('magictime puffIn alert-'+obj.type);
+  .addClass('magictime puffIn alert-'+opt.type);
+  setTimeout(closeAlert, opt.lifetime*1000)
 
-  if(obj.lifetime){
-    setTimeout(closeAlert, obj.lifetime*1000)
-  }
 }
 
 this.closeAlert = function() {

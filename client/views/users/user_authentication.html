@@ -1,0 +1,123 @@
+<template name='sign_in'>
+  <form action="action" id='sign_in_form' class='form-horizontal'>
+    <fieldset>
+      <legend>Sign In</legend>
+
+      <div class="control-group">
+        <label class="control-label" for="inputId">Email or Username</label>
+        <div class="controls">
+          <input type="text" name='id' id='inputId' placeholder="Email or Username">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputPassword">Password</label>
+        <div class="controls">
+          <input type="password" id="inputPassword" placeholder="Password" name='password'>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox"> Remember me
+          </label>
+          <button type="submit" class="btn">Sign In</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</template>
+
+<template name='sign_up'>
+ <form action="action" id='sign_up_form' class='form-horizontal'>
+  <fieldset>
+    <legend>Sign Up</legend>
+
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">Email</label>
+      <div class="controls">
+        <input type="text" name='email' id='inputEmail' placeholder="Email">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="inputUsername">Username</label>
+      <div class="controls">
+        <input type="text" id="inputUsername" placeholder="Username" name='username'>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">Password</label>
+      <div class="controls">
+        <input type="password" id="inputPassword" placeholder="Password" name='password'>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn">Sign Up</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</template>
+
+<template name='authTabs'>
+  {{#unless currentUser}}
+  <ul class="nav nav-tabs" id="authTab">
+    <li class='active'>
+      <a href="#explore" >Explore</a>
+    </li>
+    <li>
+      <a href="#sign_in">Sign In</a>
+    </li>
+    <li>
+      <a href="#sign_up">Sign Up</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="sign_up">
+      {{> explore}}
+    </div>
+    <div class="tab-pane" id="sign_in">
+      {{> sign_in}}
+    </div>
+    <div class="tab-pane" id="sign_up">
+      {{> sign_up}}
+    </div>
+  </div>
+  {{/unless}}
+</template>
+
+<template name='explore'>
+  {{#if hasUsers}}
+  <table class="table-striped table table-hover">
+    <thead>
+      <tr>
+        <td>Nickname</td>
+        <td>Points</td>
+        <td>Created Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+      <tr>
+        <td><a href="{{this.profile.front_name}}">{{this.profile.front_name}}</a></td>
+        <td>{{this.profile.points}}</td>
+        <td>{{dateToString this.profile.createdAt}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  No User Dude! Find some!
+  {{/if}}
+</template>
+
+
+
+

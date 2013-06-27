@@ -22,7 +22,7 @@ Template.sign_up.events({
         message:'You didn\'t fill the form correctly, one or more fields are empty!',
         type:'error',
         lifetime:5
-      })
+      });
       return;
     }
 
@@ -62,7 +62,19 @@ Template.sign_in.events({
       }
       else{
         Meteor.Router.to('/'+Meteor.user().profile.front_name);
+        openAlert({
+          title:'Bonjour',
+          message:'Hey, welcome back '+capitalize(Meteor.user().profile.front_name)+'!'
+        })
       }
     })
+  }
+});
+Template.explore.helpers({
+  users:function() {
+    return Meteor.users.find({}, {sort:{createdAt:-1}}).fetch();
+  },
+  hasUsers:function() {
+    return !!Meteor.users.findOne();
   }
 })

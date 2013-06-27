@@ -1,73 +1,86 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 /* line 3, ../scss/_style.scss */
 .show-grid [class^=span] {
-  border: 1px solid red;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 /* line 6, ../scss/_style.scss */
 body {
-  background: -webkit-radial-gradient(#e74c3c, #c0392b);
-  background: -moz-radial-gradient(#e74c3c, #c0392b);
-  background: -o-radial-gradient(#e74c3c, #c0392b);
-  background: -ms-radial-gradient(#e74c3c, #c0392b);
-  background: radial-gradient(#e74c3c, #c0392b);
+  background: white;
+  -webkit-transition: backgroundImage 1s ease;
+  -moz-transition: backgroundImage 1s ease;
+  -o-transition: backgroundImage 1s ease;
+  -ms-transition: backgroundImage 1s ease;
+  transition: backgroundImage 1s ease;
+  background-size: 100%, 100%;
   -webkit-background-size: 100%, 100%;
   -moz-background-size: 100%, 100%;
-  background-size: 100%, 100%;
   background-repeat: no-repeat;
 }
-
 /* line 18, ../scss/_style.scss */
+body.view-homepage {
+  background: white;
+}
+/* line 21, ../scss/_style.scss */
+body.view-user_profile {
+  background-image: -webkit-radial-gradient(#e74c3c, #c0392b);
+  background-image: -moz-radial-gradient(#e74c3c, #c0392b);
+  background-image: -o-radial-gradient(#e74c3c, #c0392b);
+  background-image: -ms-radial-gradient(#e74c3c, #c0392b);
+  background-image: radial-gradient(#e74c3c, #c0392b);
+}
+
+/* line 30, ../scss/_style.scss */
 .maxime {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* line 22, ../scss/_style.scss */
+/* line 34, ../scss/_style.scss */
 .capitalize {
   text-transform: capitalize;
 }
 
-/* line 27, ../scss/_style.scss */
+/* line 39, ../scss/_style.scss */
 .row, .row-fluid {
   font-size: 16px;
   line-height: 1.5em;
   font-family: 'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 35, ../scss/_style.scss */
+/* line 47, ../scss/_style.scss */
 .padding-20 {
   padding: 20px;
 }
 
-/* line 38, ../scss/_style.scss */
+/* line 50, ../scss/_style.scss */
 .dropshadow {
   background: white;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* line 45, ../scss/_style.scss */
+/* line 57, ../scss/_style.scss */
 .profile_picture {
   text-align: center;
 }
 @media only screen and (max-width: 766px) {
-  /* line 45, ../scss/_style.scss */
+  /* line 57, ../scss/_style.scss */
   .profile_picture {
     display: none;
   }
 }
-/* line 50, ../scss/_style.scss */
+/* line 62, ../scss/_style.scss */
 .profile_picture img {
   width: 100%;
   height: auto;
 }
 
-/* line 56, ../scss/_style.scss */
+/* line 68, ../scss/_style.scss */
 .personal_info {
   position: relative;
   overflow: hidden;
 }
-/* line 59, ../scss/_style.scss */
+/* line 71, ../scss/_style.scss */
 .personal_info .edit {
   position: absolute;
   top: 0;
@@ -96,7 +109,7 @@ body {
   -ms-transition: top .5s ease;
   transition: top .5s ease;
 }
-/* line 91, ../scss/_style.scss */
+/* line 103, ../scss/_style.scss */
 .personal_info h2 {
   text-align: center;
   text-overflow: ellipsis;

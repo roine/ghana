@@ -4,7 +4,8 @@
     "basePackages": {
       "jquery-ui-bootstrap": {},
       "router": {},
-      "modernizr-meteor": {}
+      "modernizr-meteor": {},
+      "moment": {}
     },
     "packages": {
       "jquery-ui-bootstrap": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/ckir/modernizr-meteor.git",
         "tag": "v2.6.2",
         "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
+      },
+      "moment": {
+        "git": "https://github.com/possibilities/meteor-moment.git",
+        "tag": "v1.7.0",
+        "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",

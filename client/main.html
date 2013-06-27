@@ -14,11 +14,11 @@
 </body>
 
 <template name='notification'>
- <div class="alert alert-block hide navbar-fixed-top">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <h4 class="alert-heading"></h4>
-  <div class="message"></div>
-</div>
+  <div class="alert alert-block hide navbar-fixed-top">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4 class="alert-heading"></h4>
+    <div class="message"></div>
+  </div>
 </template>
 
 <template name="header">
@@ -38,7 +38,7 @@
 </template>
 
 <template name='loggedInBar'>
-  logged in {{currentUser.profile.front_name}}
+  logged in {{currentUser.profile.front_name}} <a class='logout'>Logout</a>
   <div class="navbar ">
     <div class="navbar-inner">
       <div class="container">

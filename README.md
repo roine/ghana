@@ -22,3 +22,22 @@ ghana
 ##Roadmap
 
 [trello](https://trello.com/board/ghana/51c429250f27db512d0024cd)
+
+## DOC
+
+  var option = {
+    title:'',
+    message:'',
+    type:'info', // error, success, warning, info
+    lifetime:3 // time in second before to collapse the alert
+  }
+  openAlert(options);
+
+  ###Handlebars helper
+
+####dateToString
+
+Takes 2 Arguments
+
+ - date in timestamp (miliseconds), type:string/integer, Required
+ - a date format (see [doc](http://momentjs.com/docs/)) if no format is defined will return a length between now and date, type: string, Optionnal
