@@ -33,11 +33,11 @@ ghana
   }
   openAlert(options);
 
-  ###Handlebars helper
+###Handlebars helper
 
 ####dateToString
 
-Takes 2 Arguments
-
- - date in timestamp (miliseconds), type:string/integer, Required
- - a date format (see [doc](http://momentjs.com/docs/)) if no format is defined will return a length between now and date, type: string, Optionnal
+Arguments | Type | Required | Default | Note
+ --- | --- | --- | --- | --
+Timestamp | String/Integer | Yes | | The timestamp must be in millisecond (13 chars)
+Date format | String | No | Will return a length date between now and the defined date | see [doc](http://momentjs.com/docs/
