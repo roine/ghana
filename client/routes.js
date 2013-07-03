@@ -12,19 +12,20 @@ Meteor.Router.add({
       return 'user_profile';
     }
   },
-  '/:userId/edit': {
-    to: 'user_profile',
-    and: function(slug){
-      if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
-        Session.set('slug', slug);
-        addClass('user_profile_edit');
-        return 'user_profile';
-      }
-      else{
-        addClass('no_right');
-        return 'no_right';
-      }
+  '/:userId/edit':  function(slug){
+    if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
+      Session.set('slug', slug);
+      addClass('user_profile_edit');
+      return 'user_profile_edit';
     }
+    else if(!Meteor.users.findOne({'profile.front_name':slug})){
+      return 'not_found';
+    }
+    else{
+      addClass('no_right');
+      return 'no_right';
+    }
+
   },
   'sign_in': function(){
     addClass('sign_in');

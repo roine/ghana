@@ -1,34 +1,20 @@
 <template name="user_profile">
+  {{#with user}}
   <div class="span3 dropshadow">
     <div class="profile_picture">
 
       <div class='imgPlaceholder'>
-        <i class="icon-user icon-5"></i>
+        <i class="icon-user icon-5 "></i>
       </div>
     </div>
     <div class="personal_info padding-20">
      {{#if isCurrentUser}}
      <div class="edit">Edit Profile</div>
      {{/if}}
-     <h2 class='capitalize editable' data-name='profile.front_name'>{{user.profile.front_name}}</h2>
+     <h2 class='capitalize editable' data-name='profile.front_name'>{{profile.front_name}}</h2>
      <table class="table">
       <tbody>
-        {{#if user.profile.real_name}}
-        <tr>
-          <td>Real Name</td>
-          <td data-name='real_name'>{{user.profile.real_name}} </td>
-        </tr>
-        {{/if}}
-        {{#if user.profile.website}}
-        <tr>
-          <td>Website</td>
-          <td>{{user.profile.website}}</td>
-        </tr>
-        <tr>
-          {{/if}}
-          <td>Points</td>
-          <td>{{user.profile.points}}</td>
-        </tr>
+        {{> profile_partial}}
       </tbody>
     </table>
   </div>
@@ -36,5 +22,60 @@
 <div class="span9  dropshadow">
 
 </div>
+{{/with}}
 </template>
 
+
+<template name='profile_partial'>
+  {{#if isEditingMode profile.real_name}}
+  <tr>
+    <td>Real Name</td>
+    <td><span data-name='profile.real_name' class='editable'>{{profile.real_name}} </span></td>
+  </tr>
+  {{/if}}
+  {{#if isEditingMode profile.website}}
+  <tr>
+    <td>Website</td>
+    <td><a href='{{url profile.website}}' class='editable url' data-name='profile.website'>{{profile.website}}</a>
+    </td>
+  </tr>
+  <tr>
+    {{/if}}
+    <td>Points</td>
+    <td>{{profile.points}}</td>
+  </tr>
+  {{#if isEditingMode profile.about}}
+  <tr>
+    <td>About:</td>
+    <td><span data-type='wysihtml5' class='editable'></span></td>
+  </tr>
+  {{/if}}
+</template>
+
+
+<template name='user_profile_edit'>
+  {{#with user}}
+  <div class="span3 dropshadow">
+    <div class="profile_picture">
+
+      <div class='imgPlaceholder'>
+        <i class="icon-user icon-5 "></i>
+      </div>
+    </div>
+    <div class="personal_info padding-20">
+     {{#if isCurrentUser}}
+     <div class="edit">Finish Editing</div>
+     {{/if}}
+     <h2 class='capitalize editable' data-name='profile.front_name'>{{profile.front_name}}</h2>
+     <table class="table">
+      <tbody>
+        {{> profile_partial}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="span9  dropshadow">
+
+</div>
+{{/with}}
+</template>

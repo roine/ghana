@@ -1,61 +1,58 @@
 'use strict';
-
-Template.user_profile.helpers({
-  user:function() {
+var helpers = {
+  user:function(){
     var user = Meteor.users.find({'profile.front_name':Session.get('slug')}).fetch();
-
     // is not an empty array
     if(!isFinite(user)){
       return user[0];
     }
   },
-  isCurrentUser: function() {
+  isCurrentUser: function(){
     if(!Template.user_profile._tmpl_data.helpers.user()) return false;
     return Template.user_profile._tmpl_data.helpers.user()._id === Meteor.userId();
   }
-});
+}
 
-Template.user_profile.events({
+Template.user_profile.helpers(helpers);
+Template.user_profile_edit.helpers(helpers);
+
+var events = {
+  'load img': function(){
+    $('.edit').show();
+  },
   'mouseover .personal_info': function() {
     if(Template.user_profile._tmpl_data.helpers.isCurrentUser()){
       $('.edit').css('top', 0);
     }
   },
   'mouseout .personal_info': function() {
-    var h = $('.edit').outerHeight();
-    $('.edit').css('top', -h);
-  },
-  'click .edit': function(event) {
-    /* edit mode */
-    if($('.view-user_profile_edit').length){
-      $(event.currentTarget).text('Edit Profile');
-      Meteor.Router.to('/'+Meteor.user().profile.front_name);
-      $('.editable').editable('disable', true);
-    }
-    /* read mode */
-    else{
-      $(event.currentTarget).text('Finish Editing');
-      Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
-      $('.editable').editable('enable',true).editable({success: updateProfile});
-    }
-
-
-  },
-  // make sure the edit button does not appear on image loading
-  'load img': function(){
-    $('.edit').show();
-  }
-});
-
-Template.user_profile.rendered = function () {
-  var h = $('.edit').outerHeight();
-  $('.edit').css('top', -h);
-
-  if($('.view-user_profile_edit').length){
-    $('.edit').text('Finish Editing');
-    $('.editable').editable({success:updateProfile});
+    $('.edit').css('top', -$('.edit').outerHeight());
   }
 };
+var events_view = $.extend({}, {
+  'click .edit': function(){
+    Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
+  }
+},events);
+
+var events_edit = $.extend({}, {
+  'click .edit': function(){
+    Meteor.Router.to('/'+Meteor.user().profile.front_name);
+  }
+}, events)
+Template.user_profile.events(events_view);
+Template.user_profile_edit.events(events_edit);
+
+// Handlebars.registerPartial("profile_partial", $("#profile_partial").html());
+Template.user_profile.rendered =  function () {
+  $('.edit').css('top', -$('.edit').outerHeight());
+};
+
+Template.user_profile_edit.rendered = function(){
+ $('.edit').css('top', -$('.edit').outerHeight());
+ $('.editable').editable({success:updateProfile});
+ $('.editable.url').editable('option', 'validate', isValidURL);
+}
 
 function updateProfile(e, newValue){
   var name = $(this).data('name');
@@ -75,7 +72,8 @@ function updateProfile(e, newValue){
     }
   }
 
-  Meteor.users.update(Meteor.userId(), {$set:update}, user_updated)
+  Meteor.users.update(Meteor.userId(), {$set:update}, user_updated);
+  return newValue;
 }
 
 function user_updated(){
@@ -86,3 +84,13 @@ function user_updated(){
   });
   Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
 }
+
+function isValidURL(url){
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    if(!pattern.test(url)) return 'please enter a valid URL';
+  }
