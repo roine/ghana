@@ -12,6 +12,7 @@ Handlebars.registerHelper('isEditingMode', function(data){
 });
 
 Handlebars.registerHelper('url', function(url){
+  if(!url) return;
   if(!~url.indexOf('://')){
     return 'http://'+url;
   }
