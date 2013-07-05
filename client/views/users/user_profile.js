@@ -27,6 +27,10 @@ var events = {
   },
   'mouseout .personal_info': function() {
     $('.edit').css('top', -$('.edit').outerHeight());
+  },
+  'hidden [data-type=wysihtml5]': function(e) {
+    $('.left-sidebar').toggleClass('span3 span4');
+    $('.content').toggleClass('span9 span8')
   }
 };
 var events_view = $.extend({}, {
@@ -94,5 +98,5 @@ function isValidURL(url){
   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
   '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
   '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    if(!pattern.test(url)) return 'please enter a valid URL';
-  }
+  if(!pattern.test(url)) return 'please enter a valid URL';
+}

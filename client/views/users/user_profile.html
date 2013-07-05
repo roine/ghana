@@ -1,6 +1,6 @@
 <template name="user_profile">
   {{#with user}}
-  <div class="span3 dropshadow">
+  <div class="span3 dropshadow left-sidebar">
     <div class="profile_picture">
 
       <div class='imgPlaceholder'>
@@ -19,7 +19,7 @@
     </table>
   </div>
 </div>
-<div class="span9  dropshadow">
+<div class="span9 dropshadow content">
 
 </div>
 {{/with}}
@@ -29,25 +29,41 @@
 <template name='profile_partial'>
   {{#if isEditingMode profile.real_name}}
   <tr>
-    <td>Real Name</td>
+    <td>Real Name:</td>
     <td><span data-name='profile.real_name' class='editable'>{{profile.real_name}} </span></td>
   </tr>
   {{/if}}
   {{#if isEditingMode profile.website}}
   <tr>
-    <td>Website</td>
+    <td>Website:</td>
     <td><a href='{{url profile.website}}' class='editable url' data-name='profile.website'>{{profile.website}}</a>
     </td>
   </tr>
+  {{/if}}
+  {{#if isEditingMode profile.company}}
   <tr>
-    {{/if}}
+    <td>Company:</td>
+    <td><div class='editable' data-name='profile.company'>{{profile.company}}</div></td>
+  </tr>
+  {{/if}}
+    {{#if isEditingMode profile.company}}
+  <tr>
+    <td>Location:</td>
+    <td><div class='editable' data-name='profile.location'>{{profile.location}}</div></td>
+  </tr>
+  {{/if}}
+  <tr>
     <td>Points</td>
     <td>{{profile.points}}</td>
   </tr>
   {{#if isEditingMode profile.about}}
   <tr>
+    {{#if isEditingMode}}
     <td>About:</td>
-    <td><span data-type='wysihtml5' class='editable'></span></td>
+    <td ><span data-type='textarea' class='editable' data-name='profile.about'>{{textarea profile.about}}</span></td>
+    {{else}}
+    <td colspan='2'><span data-type='textarea' class='editable' data-name='profile.about'>{{textarea profile.about}}</span></td>
+    {{/if}}
   </tr>
   {{/if}}
 </template>
@@ -55,7 +71,7 @@
 
 <template name='user_profile_edit'>
   {{#with user}}
-  <div class="span3 dropshadow">
+  <div class="span3 dropshadow left-sidebar">
     <div class="profile_picture">
 
       <div class='imgPlaceholder'>
@@ -74,7 +90,7 @@
     </table>
   </div>
 </div>
-<div class="span9  dropshadow">
+<div class="span9 dropshadow content">
 
 </div>
 {{/with}}

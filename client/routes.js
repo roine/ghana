@@ -13,6 +13,7 @@ Meteor.Router.add({
     }
   },
   '/:userId/edit':  function(slug){
+
     if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
       Session.set('slug', slug);
       addClass('user_profile_edit');

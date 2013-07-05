@@ -8,7 +8,12 @@ Handlebars.registerHelper('dateToString', function(date, pattern){
 });
 
 Handlebars.registerHelper('isEditingMode', function(data){
-  return $('.view-user_profile_edit').length || data
+  if($('.view-user_profile_edit').length) return true;
+  console.log(data)
+  if(data) return true;
+
+  if(typeof data === 'object') return false;
+  return false;
 });
 
 Handlebars.registerHelper('url', function(url){
@@ -16,4 +21,10 @@ Handlebars.registerHelper('url', function(url){
   if(!~url.indexOf('://')){
     return 'http://'+url;
   }
+});
+
+Handlebars.registerHelper('textarea', function(text){
+  text = text.toString();
+  text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+  return new Handlebars.SafeString(text);
 })
