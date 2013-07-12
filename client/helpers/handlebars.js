@@ -20,7 +20,12 @@ Handlebars.registerHelper('isEditingMode', function(data){
 Handlebars.registerHelper('aOrAn', function(data){
   if(!data) return;
 
-  if(~'a e i o u'.split(' ').indexOf(data[0])) return 'an '+data;
+  if(~'a e i o u'.split(' ').indexOf(data[0])){
+    if(data[1] === ' ' || (data[2] === 'n' && data[3] === ' ')){
+      return data;
+    }
+    return 'an '+data;
+  }
 
   return 'a '+data
 });

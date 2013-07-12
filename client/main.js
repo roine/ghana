@@ -77,6 +77,3 @@ this.pluralize = function(count, word) {
   }
 }
 
-
-
-

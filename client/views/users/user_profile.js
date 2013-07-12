@@ -54,6 +54,7 @@ Template.user_profile.rendered =  function () {
 };
 
 Template.user_profile_edit.rendered = function(){
+Meteor.subscribe('adjectives');
 
  $('.edit').css('top', -$('.edit').outerHeight());
  $('.editable').tooltip({
@@ -61,13 +62,13 @@ Template.user_profile_edit.rendered = function(){
  })
  $('#feelings').editable({
   success:updateProfile,
-  source:[
-  {value:'', text:''},
-  {value:'despicable', text:'despicable'},
-  {value:'great', text:'great'}
-  ]
+  placement:'right',
+  source: function(){
+    var adj = new Meteor.Collection("adjectives");
+    return adj.findOne().text;
+  }
 });
- $('.editable').editable({success:updateProfile});
+ $('.editable').editable({success:updateProfile, placement:'right'});
  $('.editable.url').editable('option', 'validate', isValidURL);
 
 

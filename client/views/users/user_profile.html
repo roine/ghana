@@ -30,25 +30,25 @@
   <div class="row-fluid lead story">
     <div class="span12">
       {{#if isEditingMode profile.real_name}}
-      My name is <span data-name='profile.real_name' class='editable' title="Real Name">{{profile.real_name}}</span>
+      My name is <span data-name='profile.real_name' class='editable' title="Real Name" data-original-title="Your real name, don't be shy!">{{profile.real_name}}</span>
       {{/if}}
       {{#if isEditingMode profile.title}}
-      and I'm <span class="editable" data-name='profile.title' title='Job title'>{{aOrAn profile.title}}</span>
+      and I'm <span class="editable" data-name='profile.title' title='Job title' data-original-title="Your current position.">{{aOrAn profile.title}}</span>
       {{/if}}
       {{#if isEditingMode profile.location}}
       {{#if profile.title}}
-      living in <span class='editable' data-name='profile.location' title='Current location'>{{profile.location}}</span>
+      living in <span class='editable' data-name='profile.location' title='Current location' data-original-title="Which country/city are you spending most of your time?">{{profile.location}}</span>
       {{else}}
-      I live in <span class='editable' data-name='profile.location' title='Current location'>{{profile.location}}</span>
+      I live in <span class='editable' data-name='profile.location' title='Current location' data-original-title="Which country/city are you spending most of your time?">{{profile.location}}</span>
       {{/if}}
       .
       {{/if}}
       {{#if isEditingMode profile.company}}
       I currently work for
       {{#if isEditingMode profile.company_feeling}}
-      the <span class='editable' id="feelings" data-type="select" data-name='profile.company_feeling' title='How do you feel about your company'>{{profile.company_feeling}}</span>
+      the <span class='editable' id="feelings" data-type="typeahead" data-name='profile.company_feeling' title='How do you feel about your company' data-original-title='How do you feel about your company'>{{profile.company_feeling}}</span>
       {{/if}}
-      <span class="editable"data-name='profile.company' title='Company you are currently working for'>{{profile.company}}</span>.
+      <span class="editable"data-name='profile.company' title='Company you are currently working for' data-original-title="The company who currently pay you to watch cats' video.">{{profile.company}}</span>.
       {{/if}}
     </div>
   </div>
