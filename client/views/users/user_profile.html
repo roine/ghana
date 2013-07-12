@@ -12,60 +12,86 @@
      <div class="edit">Edit Profile</div>
      {{/if}}
      <h2 class='capitalize editable' data-name='profile.front_name'>{{profile.front_name}}</h2>
-     <table class="table">
-      <tbody>
-        {{> profile_partial}}
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="span9 dropshadow content">
 
-</div>
-{{/with}}
+     {{> profile_partial}}
+
+   </div>
+ </div>
+ <div class="span9 dropshadow content">
+
+ </div>
+ {{/with}}
 </template>
 
 
 <template name='profile_partial'>
-  {{#if isEditingMode profile.real_name}}
-  <tr>
-    <td>Real Name:</td>
-    <td><span data-name='profile.real_name' class='editable'>{{profile.real_name}} </span></td>
-  </tr>
-  {{/if}}
-  {{#if isEditingMode profile.website}}
-  <tr>
-    <td>Website:</td>
-    <td><a href='{{url profile.website}}' class='editable url' data-name='profile.website'>{{profile.website}}</a>
-    </td>
-  </tr>
-  {{/if}}
-  {{#if isEditingMode profile.company}}
-  <tr>
-    <td>Company:</td>
-    <td><div class='editable' data-name='profile.company'>{{profile.company}}</div></td>
-  </tr>
-  {{/if}}
-    {{#if isEditingMode profile.company}}
-  <tr>
-    <td>Location:</td>
-    <td><div class='editable' data-name='profile.location'>{{profile.location}}</div></td>
-  </tr>
-  {{/if}}
-  <tr>
-    <td>Points</td>
-    <td>{{profile.points}}</td>
-  </tr>
+
+
+  <div class="row-fluid lead story">
+    <div class="span12">
+      {{#if isEditingMode profile.real_name}}
+      My name is <span data-name='profile.real_name' class='editable' title="Real Name">{{profile.real_name}}</span>
+      {{/if}}
+      {{#if isEditingMode profile.title}}
+      and I'm <span class="editable" data-name='profile.title' title='Job title'>{{aOrAn profile.title}}</span>
+      {{/if}}
+      {{#if isEditingMode profile.location}}
+      {{#if profile.title}}
+      living in <span class='editable' data-name='profile.location' title='Current location'>{{profile.location}}</span>
+      {{else}}
+      I live in <span class='editable' data-name='profile.location' title='Current location'>{{profile.location}}</span>
+      {{/if}}
+      .
+      {{/if}}
+      {{#if isEditingMode profile.company}}
+      I currently work for
+      {{#if isEditingMode profile.company_feeling}}
+      the <span class='editable' id="feelings" data-type="select" data-name='profile.company_feeling' title='How do you feel about your company'>{{profile.company_feeling}}</span>
+      {{/if}}
+      <span class="editable"data-name='profile.company' title='Company you are currently working for'>{{profile.company}}</span>.
+      {{/if}}
+    </div>
+  </div>
+
   {{#if isEditingMode profile.about}}
-  <tr>
+  <div class="row-fluid lead">
     {{#if isEditingMode}}
-    <td>About:</td>
-    <td ><span data-type='textarea' class='editable' data-name='profile.about'>{{textarea profile.about}}</span></td>
+    <div class="span12">
+      About:
+    </div>
+    <div class="span12">
+      <div data-type='textarea' class='editable' data-name='profile.about'>{{textarea profile.about}}</div>
+    </div>
     {{else}}
-    <td colspan='2'><span data-type='textarea' class='editable' data-name='profile.about'>{{textarea profile.about}}</span></td>
+    <div class="span12">
+      {{textarea profile.about}}
+    </div>
     {{/if}}
-  </tr>
+  </div>
   {{/if}}
+
+
+
+  {{#if isEditingMode profile.website}}
+  <div class="row-fluid">
+    <div class="span6">
+      Website:
+    </div>
+    <div class="span6">
+      <a href='{{url profile.website}}' class='editable url' data-name='profile.website'>{{profile.website}}</a>
+    </div>
+  </div>
+  {{/if}}
+
+
+  <div class="row-fluid">
+    <div class="span6">
+      Points:
+    </div>
+    <div class="span6">
+      {{profile.points}}
+    </div>
+  </div>
 </template>
 
 
@@ -83,15 +109,12 @@
      <div class="edit">Finish Editing</div>
      {{/if}}
      <h2 class='capitalize editable' data-name='profile.front_name'>{{profile.front_name}}</h2>
-     <table class="table">
-      <tbody>
-        {{> profile_partial}}
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="span9 dropshadow content">
+     {{> profile_partial}}
 
-</div>
-{{/with}}
+   </div>
+ </div>
+ <div class="span9 dropshadow content">
+
+ </div>
+ {{/with}}
 </template>

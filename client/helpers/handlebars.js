@@ -8,12 +8,21 @@ Handlebars.registerHelper('dateToString', function(date, pattern){
 });
 
 Handlebars.registerHelper('isEditingMode', function(data){
-  if($('.view-user_profile_edit').length) return true;
-  console.log(data)
-  if(data) return true;
+  if(Meteor.Router.page() === 'user_profile_edit') return true;
 
   if(typeof data === 'object') return false;
+
+  if(data) return true;
+
   return false;
+});
+
+Handlebars.registerHelper('aOrAn', function(data){
+  if(!data) return;
+
+  if(~'a e i o u'.split(' ').indexOf(data[0])) return 'an '+data;
+
+  return 'a '+data
 });
 
 Handlebars.registerHelper('url', function(url){

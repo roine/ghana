@@ -3,6 +3,10 @@
 .show-grid [class^=span]{
   border:1px solid rgba(0,0,0,.4);
 }
+html, body {
+  height: 100%;
+}
+
 body{
   background:white;
   -webkit-transition:all 1s ease;
@@ -18,20 +22,26 @@ body{
   &.view-homepage{
     background:white
   }
-  &.view-user_profile{
+  &.view-user_profile #wrap{
     background: -webkit-radial-gradient(#e74c3c, #c0392b);
     background: -moz-radial-gradient(#e74c3c, #c0392b);
     background: -o-radial-gradient(#e74c3c, #c0392b);
     background: -ms-radial-gradient(#e74c3c, #c0392b);
     background:radial-gradient(#e74c3c, #c0392b);
   }
-  &.view-user_profile_edit{
+  &.view-user_profile_edit #wrap{
     background: -webkit-radial-gradient(#3498db, #2980b9);
     background: -moz-radial-gradient(#3498db, #2980b9);
     background: -o-radial-gradient(#3498db, #2980b9);
     background: -ms-radial-gradient(#3498db, #2980b9);
     background:radial-gradient(#3498db, #2980b9);
   }
+}
+
+#wrap {
+  min-height: 100%;
+  padding-bottom:50px;
+  box-shadow: inset 0 -3px 1px rgba(0,0,0,.1);
 }
 
 .maxime{
@@ -85,6 +95,9 @@ body{
   }
 
 }
+.story .editable{
+  font-weight:400;
+}
 .personal_info{
   position:relative;
   .edit{
@@ -125,3 +138,13 @@ body{
     overflow: hidden;
   }
 }
+
+footer{
+  background:#2c5f85;
+  box-shadow:inset 0 5px 5px -3px rgba(0,0,0,.5);
+  color:#e8e8e8;
+  div[class^=span]{
+    padding: 10px;
+  }
+}
+

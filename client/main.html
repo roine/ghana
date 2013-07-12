@@ -4,14 +4,27 @@
 </head>
 
 <body>
-  {{> notification}}
-  <div class="container-fluid maxime">
-    {{> header}}
-    <div class="row-fluid">
-      {{#isolate}} {{renderPage}} {{/isolate}}
+  <div id="wrap">
+    {{> notification}}
+    <div class="container-fluid maxime clear-top">
+      {{> header}}
+      <div class="row-fluid">
+        {{#isolate}} {{renderPage}} {{/isolate}}
+      </div>
     </div>
   </div>
+  <footer class=''>
+    {{> footer}}
+  </footer>
 </body>
+
+<template name='footer'>
+  <div class="row-fluid">
+    <div class="span6">Made By...</div>
+    <div class="span3">...Jonathan de Montalembert...</div>
+    <div class="span3">...with Meteor</div>
+  </div>
+</template>
 
 <template name='notification'>
   <div class="alert alert-block hide navbar-fixed-top">

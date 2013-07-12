@@ -1,4 +1,5 @@
 'use strict';
+
 var helpers = {
   user:function(){
     var user = Meteor.users.find({'profile.front_name':Session.get('slug')}).fetch();
@@ -30,7 +31,7 @@ var events = {
   },
   'hidden [data-type=wysihtml5]': function(e) {
     $('.left-sidebar').toggleClass('span3 span4');
-    $('.content').toggleClass('span9 span8')
+    $('.content').toggleClass('span9 span9')
   }
 };
 var events_view = $.extend({}, {
@@ -53,9 +54,23 @@ Template.user_profile.rendered =  function () {
 };
 
 Template.user_profile_edit.rendered = function(){
+
  $('.edit').css('top', -$('.edit').outerHeight());
+ $('.editable').tooltip({
+  placement:'top'
+ })
+ $('#feelings').editable({
+  success:updateProfile,
+  source:[
+  {value:'', text:''},
+  {value:'despicable', text:'despicable'},
+  {value:'great', text:'great'}
+  ]
+});
  $('.editable').editable({success:updateProfile});
  $('.editable.url').editable('option', 'validate', isValidURL);
+
+
 }
 
 function updateProfile(e, newValue){
@@ -75,17 +90,27 @@ function updateProfile(e, newValue){
       return false;
     }
   }
-
   Meteor.users.update(Meteor.userId(), {$set:update}, user_updated);
   return newValue;
 }
 
-function user_updated(){
-  openAlert({
-    title: 'Success',
-    message: 'You successfuly updated your profile!',
-    type: 'success'
-  });
+function user_updated(error, result){
+  if(error){
+    openAlert({
+      title: 'Error ',
+      message: error.reason,
+      type: 'error',
+      lifetime:10
+    });
+  }
+  else{
+    openAlert({
+      title: 'Success',
+      message: 'You successfuly updated your profile!',
+      type: 'success'
+    });
+  }
+
   Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
 }
 
