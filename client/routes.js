@@ -4,6 +4,10 @@ Meteor.Router.add({
     addClass('homepage');
     return 'homepage';
   },
+  '/tests': function(){
+    addClass('tests')
+    return 'tests';
+  },
   '/:userId': {
     to: 'user_profile',
     and: function(slug) {
@@ -37,7 +41,7 @@ Meteor.Router.add({
     Session.set('type', 'Page');
     addClass('no_found');
     return 'not_found';
-  },
+  }
 });
 
 Meteor.Router.filters({

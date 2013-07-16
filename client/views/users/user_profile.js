@@ -54,22 +54,22 @@ Template.user_profile.rendered =  function () {
 };
 
 Template.user_profile_edit.rendered = function(){
-Meteor.subscribe('adjectives');
+  Meteor.subscribe('adjectives');
 
- $('.edit').css('top', -$('.edit').outerHeight());
- $('.editable').tooltip({
-  placement:'top'
- })
- $('#feelings').editable({
-  success:updateProfile,
-  placement:'right',
-  source: function(){
-    var adj = new Meteor.Collection("adjectives");
-    return adj.findOne().text;
-  }
-});
- $('.editable').editable({success:updateProfile, placement:'right'});
- $('.editable.url').editable('option', 'validate', isValidURL);
+  $('.edit').css('top', -$('.edit').outerHeight());
+  $('.editable').tooltip({
+    placement:'top'
+  })
+  $('#feelings').editable({
+    success:updateProfile,
+    placement:'right',
+    source: function(){
+      var adj = new Meteor.Collection("adjectives");
+      return adj.findOne().text;
+    }
+  });
+  $('.editable').editable({success:updateProfile, placement:'right'});
+  $('.editable.url').editable('option', 'validate', isValidURL);
 
 
 }

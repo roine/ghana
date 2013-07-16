@@ -5,6 +5,7 @@
     "modernizr-meteor": {},
     "moment": {},
     "x-editable-bootstrap": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "mocha-web": {}
   }
 }
