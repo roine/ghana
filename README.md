@@ -5,6 +5,7 @@ ghana
 
  - https://github.com/paulkinzett/toolbar (A tooltip style toolbar jQuery plugin)
  - http://vitalets.github.io/x-editable/ (in-place editing with Twitter Bootstrap, jQuery UI or pure jQuery)
+ - https://github.com/mad-eye/meteor-mocha-web (testing with mocha and meteor + chai)
 
 ##Maybe Resources
 

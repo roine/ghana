@@ -68,24 +68,14 @@
   font-style: italic;
 }
 
-/* line 2, ../scss/_style.scss */
-.show-grid [class^=span] {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-}
-
-/* line 5, ../scss/_style.scss */
+/* line 1, ../scss/_style.scss */
 html, body {
   height: 100%;
 }
 
-/* line 9, ../scss/_style.scss */
+/* line 5, ../scss/_style.scss */
 body {
   background: white;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
   background-size: 100%, 100%;
   -webkit-background-size: 100%, 100%;
   -moz-background-size: 100%, 100%;
@@ -93,16 +83,80 @@ body {
 }
 
 /*
-*
-* Design by view
-*
-*/
+ *
+ * Helpers
+ *
+ */
+/* line 20, ../scss/_style.scss */
+.padding-20 {
+  padding: 20px;
+}
+
+/* line 24, ../scss/_style.scss */
+.capitalize {
+  text-transform: capitalize;
+}
+
 /* line 28, ../scss/_style.scss */
+.dropshadow {
+  background: white;
+  -webkit-box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* line 34, ../scss/_style.scss */
+.isUrl {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* line 40, ../scss/_style.scss */
+.show-grid [class^=span] {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* line 43, ../scss/_style.scss */
+#removeAccount {
+  margin-top: 50px;
+}
+
+/*
+ *
+ * General
+ *
+ */
+/* line 54, ../scss/_style.scss */
+#wrap {
+  min-height: 100%;
+  padding-bottom: 50px;
+  box-shadow: inset 0 -3px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* line 60, ../scss/_style.scss */
+.maxime {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* line 67, ../scss/_style.scss */
+.row, .row-fluid {
+  font-size: 16px;
+  line-height: 1.5em;
+  font-family: 'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+ *
+ * Design by view
+ *
+ */
+/* line 80, ../scss/_style.scss */
 .view-homepage {
   background: white;
 }
 
-/* line 31, ../scss/_style.scss */
+/* line 83, ../scss/_style.scss */
 .view-user_profile #wrap {
   background: -webkit-radial-gradient(#e74c3c, #c0392b);
   background: -moz-radial-gradient(#e74c3c, #c0392b);
@@ -111,7 +165,7 @@ body {
   background: radial-gradient(#e74c3c, #c0392b);
 }
 
-/* line 38, ../scss/_style.scss */
+/* line 90, ../scss/_style.scss */
 .view-user_profile_edit #wrap {
   background: -webkit-radial-gradient(#3498db, #2980b9);
   background: -moz-radial-gradient(#3498db, #2980b9);
@@ -121,55 +175,11 @@ body {
 }
 
 /*
-*
-* End Design by view
-*
-*/
-/* line 51, ../scss/_style.scss */
-#wrap {
-  min-height: 100%;
-  padding-bottom: 50px;
-  box-shadow: inset 0 -3px 1px rgba(0, 0, 0, 0.1);
-}
-
-/* line 57, ../scss/_style.scss */
-.maxime {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* line 61, ../scss/_style.scss */
-.capitalize {
-  text-transform: capitalize;
-}
-
-/* line 66, ../scss/_style.scss */
-.row, .row-fluid {
-  font-size: 16px;
-  line-height: 1.5em;
-  font-family: 'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-/* line 74, ../scss/_style.scss */
-.padding-20 {
-  padding: 20px;
-}
-
-/* line 77, ../scss/_style.scss */
-.dropshadow {
-  background: white;
-  -webkit-box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* line 83, ../scss/_style.scss */
-.isUrl {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* line 91, ../scss/_style.scss */
+ *
+ * Blocks
+ *
+ */
+/* line 105, ../scss/_style.scss */
 .profile_picture {
   text-align: center;
   position: relative;
@@ -177,31 +187,32 @@ body {
   z-index: 10;
 }
 @media only screen and (max-width: 766px) {
-  /* line 91, ../scss/_style.scss */
+  /* line 105, ../scss/_style.scss */
   .profile_picture {
     display: none;
   }
 }
-/* line 99, ../scss/_style.scss */
+/* line 113, ../scss/_style.scss */
 .profile_picture .imgPlaceholder {
   background: #D6D6D6;
 }
-/* line 101, ../scss/_style.scss */
+/* line 115, ../scss/_style.scss */
 .profile_picture .imgPlaceholder i {
   color: white;
   font-size: 15em;
+  font-size: 15vw;
 }
 
-/* line 108, ../scss/_style.scss */
+/* line 124, ../scss/_style.scss */
 .story .editable {
   font-weight: 400;
 }
 
-/* line 111, ../scss/_style.scss */
+/* line 127, ../scss/_style.scss */
 .personal_info {
   position: relative;
 }
-/* line 113, ../scss/_style.scss */
+/* line 129, ../scss/_style.scss */
 .personal_info .edit {
   position: absolute;
   top: 0;
@@ -230,20 +241,20 @@ body {
   -ms-transition: top .5s ease;
   transition: top .5s ease;
 }
-/* line 145, ../scss/_style.scss */
+/* line 161, ../scss/_style.scss */
 .personal_info h2 {
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-/* line 152, ../scss/_style.scss */
+/* line 168, ../scss/_style.scss */
 footer {
   background: #2c5f85;
   box-shadow: inset 0 5px 5px -3px rgba(0, 0, 0, 0.5);
   color: #e8e8e8;
 }
-/* line 156, ../scss/_style.scss */
+/* line 172, ../scss/_style.scss */
 footer div[class^=span] {
   padding: 10px;
 }

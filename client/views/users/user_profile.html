@@ -92,6 +92,16 @@
       {{profile.points}}
     </div>
   </div>
+
+  {{#if isEditingMode}}
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="btn-danger btn btn-small" id='removeAccount'>
+        Remove your account
+      </div>
+    </div>
+  </div>
+  {{/if}}
 </template>
 
 

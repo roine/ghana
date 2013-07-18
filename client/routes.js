@@ -1,8 +1,11 @@
 
 Meteor.Router.add({
-  '/': function(){
-    addClass('homepage');
-    return 'homepage';
+  '/': {
+    as:'homepage',
+    to: function(){
+      addClass('homepage');
+      return 'homepage';
+    }
   },
   '/sign_in': function(){
     addClass('sign_in');

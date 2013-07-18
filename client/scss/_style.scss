@@ -1,31 +1,83 @@
-// helper for grid
-.show-grid [class^=span]{
-  border:1px solid rgba(0,0,0,.4);
-}
 html, body {
   height: 100%;
 }
 
 body{
   background:white;
-  -webkit-transition:all 1s ease;
-  -moz-transition:all 1s ease;
-  -o-transition:all 1s ease;
-  -ms-transition:all 1s ease;
-  transition:all 1s ease;
-
   background-size:100%, 100%;
   -webkit-background-size:100%, 100%;
   -moz-background-size:100%, 100%;
   background-repeat: no-repeat;
 }
 
+
 /*
-*
-* Design by view
-*
-*/
-.view-homepage{
+ *
+ * Helpers
+ *
+ */
+
+ .padding-20{
+  padding:20px;
+}
+
+.capitalize{
+  text-transform:capitalize;
+}
+
+.dropshadow{
+  background:white;
+  -webkit-box-shadow:0 2px 3px 2px rgba(0, 0, 0, 0.1);
+  box-shadow:0 2px 3px 2px rgba(0, 0, 0, 0.1);
+}
+
+.isUrl{
+  color:blue;
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.show-grid [class^=span]{
+  border:1px solid rgba(0,0,0,.4);
+}
+#removeAccount{
+  margin-top: 50px;
+}
+
+
+/*
+ *
+ * General
+ *
+ */
+
+ #wrap {
+  min-height: 100%;
+  padding-bottom:50px;
+  box-shadow: inset 0 -3px 1px rgba(0,0,0,.1);
+}
+
+.maxime{
+  max-width:$max-container-width;
+  margin:0 auto;
+}
+
+
+
+.row, .row-fluid{
+  font-size:16px;
+  line-height:1.5em;
+  font-family:'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/*
+ *
+ * Design by view
+ *
+ */
+
+ .view-homepage{
   background:white
 }
 .view-user_profile #wrap{
@@ -42,53 +94,15 @@ body{
   background: -ms-radial-gradient(#3498db, #2980b9);
   background:radial-gradient(#3498db, #2980b9);
 }
+
+
 /*
-*
-* End Design by view
-*
-*/
+ *
+ * Blocks
+ *
+ */
 
-#wrap {
-  min-height: 100%;
-  padding-bottom:50px;
-  box-shadow: inset 0 -3px 1px rgba(0,0,0,.1);
-}
-
-.maxime{
-  max-width:$max-container-width;
-  margin:0 auto;
-}
-.capitalize{
-  text-transform:capitalize;
-}
-
-
-.row, .row-fluid{
-  font-size:16px;
-  line-height:1.5em;
-  font-family:'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-// helper
-
-.padding-20{
-  padding:20px;
-}
-.dropshadow{
-  background:white;
-  -webkit-box-shadow:0 2px 3px 2px rgba(0, 0, 0, 0.1);
-  box-shadow:0 2px 3px 2px rgba(0, 0, 0, 0.1);
-}
-
-.isUrl{
-  color:blue;
-  text-decoration: underline;
-  cursor:pointer;
-}
-
-//
-
-.profile_picture{
+ .profile_picture{
   text-align:center;
   position: relative;
   border-bottom:#3498DB 5px solid;
@@ -100,7 +114,9 @@ body{
     background:#D6D6D6;
     i{
       color:white;
-      font-size: 15em;
+      font-size:15em;
+      // fluid font
+      font-size: 15vw;
     }
   }
 

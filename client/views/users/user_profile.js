@@ -43,6 +43,13 @@ var events_view = $.extend({}, {
 var events_edit = $.extend({}, {
   'click .edit': function(){
     Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
+  },
+  'click #removeAccount': function(){
+    openAlert({
+      title:"You are going to remove your account",
+      message:"Wait!!! If you remove your account everything will be lost forever!<br /><a href='#' class='btn closeAlert'>Do nothing</a> <a class='btn btn-danger deleteAccount' href='#'>Delete my account</a>",
+      lifetime:30000
+    });
   }
 }, events)
 Template.user_profile.events(events_view);
@@ -54,9 +61,35 @@ Template.user_profile.rendered =  function () {
 };
 
 Template.user_profile_edit.rendered = function(){
-  Meteor.subscribe('adjectives');
+  // nothing worked for live dom event
+  $('body').on('click', '.closeAlert', function(){
+    closeAlert();
+    return false;
+  });
+  $('body').on('click', '.deleteAccount', function(){
+    Meteor.users.remove(Meteor.userId(), function(error){
+      if(error) {
+        openAlert({
+          title:'Error',
+          message: 'Could not delete your account due to error #'+error.error+': '+error.message,
+          lifetime:10
+        });
+        return false;
+      }
+      closeAlert();
+      Meteor.logout();
+      Meteor.Router.to(Meteor.Router.homepagePath());
+      openAlert({
+        title:'Adios Amigo',
+        message:'You successfuly left us all alone, Congrats!',
+        lifetime:5
+      });
+    });
+    return false;
+  });
 
   $('.edit').css('top', -$('.edit').outerHeight());
+
   $('.editable').tooltip({
     placement:'top'
   })
@@ -64,8 +97,7 @@ Template.user_profile_edit.rendered = function(){
     success:updateProfile,
     placement:'right',
     source: function(){
-      var adj = new Meteor.Collection("adjectives");
-      return adj.findOne().text;
+      return Adjectives.findOne().text;
     }
   });
   $('.editable').editable({success:updateProfile, placement:'right'});

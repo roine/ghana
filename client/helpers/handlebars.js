@@ -38,6 +38,7 @@ Handlebars.registerHelper('url', function(url){
 });
 
 Handlebars.registerHelper('textarea', function(text){
+  if(!text) return;
   text = text.toString();
   text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
   return new Handlebars.SafeString(text);
