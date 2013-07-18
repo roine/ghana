@@ -4,18 +4,26 @@
 </head>
 
 <body>
+  {{#if test}}
+        {{> mochaTestReport}}
+        {{else}}
   <div id="wrap">
     {{> notification}}
     <div class="container-fluid maxime clear-top">
       {{> header}}
+
       <div class="row-fluid">
         {{#isolate}} {{renderPage}} {{/isolate}}
+
+
       </div>
     </div>
   </div>
+
   <footer class=''>
     {{> footer}}
   </footer>
+  {{/if}}
 </body>
 
 <template name='footer'>
@@ -64,7 +72,7 @@
         <a class="brand" href="/" data-view='homepage'>Ghana</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="" data-view='user_profile'><a href="/{{currentUser.profile.front_name}}">Profile</a></li>
+            <li class="" data-view='user_profile'><a href="{{userProfilePath currentUser.profile.front_name}}">Profile</a></li>
             <li><a href="#" data-view=''>Link</a></li>
             <li><a href="#">Link</a></li>
           </ul>

@@ -4,43 +4,40 @@ Meteor.Router.add({
     addClass('homepage');
     return 'homepage';
   },
-  '/tests': function(){
-    addClass('tests')
-    return 'tests';
-  },
-  '/:userId': {
-    to: 'user_profile',
-    and: function(slug) {
-      Session.set('slug', slug);
-      addClass('user_profile');
-      return 'user_profile';
-    }
-  },
-  '/:userId/edit':  function(slug){
-
-    if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
-      Session.set('slug', slug);
-      addClass('user_profile_edit');
-      return 'user_profile_edit';
-    }
-    else if(!Meteor.users.findOne({'profile.front_name':slug})){
-      return 'not_found';
-    }
-    else{
-      addClass('no_right');
-      return 'no_right';
-    }
-
-  },
-  'sign_in': function(){
+  '/sign_in': function(){
     addClass('sign_in');
     return 'sign_in';
   },
-  //  not found at the end
-  '*': function(){
-    Session.set('type', 'Page');
-    addClass('no_found');
-    return 'not_found';
+  '/sign_up': function(){
+    addClass('sign_up');
+    return 'sign_up';
+  },
+  '/:userId': {
+    as: 'userProfile',
+    to: function(slug) {
+      if(Meteor.users.findOne({'profile.front_name':slug})){
+        Session.set('slug', slug);
+        addClass('user_profile');
+        return 'user_profile';
+      }
+      return 'not_found';
+
+    }
+  },
+  '/:userId/edit': {
+    as: 'userProfileEdit',
+    to: function(slug){
+      if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
+        Session.set('slug', slug);
+        addClass('user_profile_edit');
+        return 'user_profile_edit';
+      }
+      else if(!Meteor.users.findOne({'profile.front_name':slug})){
+        return 'not_found';
+      }
+      addClass('no_right');
+      return 'no_right';
+    }
   }
 });
 
@@ -53,9 +50,16 @@ Meteor.Router.filters({
     } else {
       return 'authTabs';
     }
+  },
+  'checkLoggedOut': function(page){
+    if(Meteor.user()){
+      return 'not_found';
+    }
+    return page;
   }
 });
 
 Meteor.Router.filter('checkLoggedIn', {only: 'homepage'});
+Meteor.Router.filter('checkLoggedOut', {only:['sign_in', 'sign_up']})
 
 

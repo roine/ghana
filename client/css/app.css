@@ -1,15 +1,84 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
-/* line 3, ../scss/_style.scss */
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-BoldItalic.ttf) format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-ExtraBold.ttf) format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-ExtraBoldItalic.ttf) format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-Italic.ttf) format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-Light.ttf) format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-LightItalic.ttf) format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-Semibold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: url(/fonts/OpenSans-SemiboldItalic.ttf) format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* line 2, ../scss/_style.scss */
 .show-grid [class^=span] {
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-/* line 6, ../scss/_style.scss */
+/* line 5, ../scss/_style.scss */
 html, body {
   height: 100%;
 }
 
-/* line 10, ../scss/_style.scss */
+/* line 9, ../scss/_style.scss */
 body {
   background: white;
   -webkit-transition: all 1s ease;
@@ -22,20 +91,28 @@ body {
   -moz-background-size: 100%, 100%;
   background-repeat: no-repeat;
 }
-/* line 22, ../scss/_style.scss */
-body.view-homepage {
+
+/*
+*
+* Design by view
+*
+*/
+/* line 28, ../scss/_style.scss */
+.view-homepage {
   background: white;
 }
-/* line 25, ../scss/_style.scss */
-body.view-user_profile #wrap {
+
+/* line 31, ../scss/_style.scss */
+.view-user_profile #wrap {
   background: -webkit-radial-gradient(#e74c3c, #c0392b);
   background: -moz-radial-gradient(#e74c3c, #c0392b);
   background: -o-radial-gradient(#e74c3c, #c0392b);
   background: -ms-radial-gradient(#e74c3c, #c0392b);
   background: radial-gradient(#e74c3c, #c0392b);
 }
-/* line 32, ../scss/_style.scss */
-body.view-user_profile_edit #wrap {
+
+/* line 38, ../scss/_style.scss */
+.view-user_profile_edit #wrap {
   background: -webkit-radial-gradient(#3498db, #2980b9);
   background: -moz-radial-gradient(#3498db, #2980b9);
   background: -o-radial-gradient(#3498db, #2980b9);
@@ -43,51 +120,56 @@ body.view-user_profile_edit #wrap {
   background: radial-gradient(#3498db, #2980b9);
 }
 
-/* line 41, ../scss/_style.scss */
+/*
+*
+* End Design by view
+*
+*/
+/* line 51, ../scss/_style.scss */
 #wrap {
   min-height: 100%;
   padding-bottom: 50px;
   box-shadow: inset 0 -3px 1px rgba(0, 0, 0, 0.1);
 }
 
-/* line 47, ../scss/_style.scss */
+/* line 57, ../scss/_style.scss */
 .maxime {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* line 51, ../scss/_style.scss */
+/* line 61, ../scss/_style.scss */
 .capitalize {
   text-transform: capitalize;
 }
 
-/* line 56, ../scss/_style.scss */
+/* line 66, ../scss/_style.scss */
 .row, .row-fluid {
   font-size: 16px;
   line-height: 1.5em;
   font-family: 'Open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 64, ../scss/_style.scss */
+/* line 74, ../scss/_style.scss */
 .padding-20 {
   padding: 20px;
 }
 
-/* line 67, ../scss/_style.scss */
+/* line 77, ../scss/_style.scss */
 .dropshadow {
   background: white;
   -webkit-box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* line 73, ../scss/_style.scss */
+/* line 83, ../scss/_style.scss */
 .isUrl {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
 }
 
-/* line 81, ../scss/_style.scss */
+/* line 91, ../scss/_style.scss */
 .profile_picture {
   text-align: center;
   position: relative;
@@ -95,31 +177,31 @@ body.view-user_profile_edit #wrap {
   z-index: 10;
 }
 @media only screen and (max-width: 766px) {
-  /* line 81, ../scss/_style.scss */
+  /* line 91, ../scss/_style.scss */
   .profile_picture {
     display: none;
   }
 }
-/* line 89, ../scss/_style.scss */
+/* line 99, ../scss/_style.scss */
 .profile_picture .imgPlaceholder {
   background: #D6D6D6;
 }
-/* line 91, ../scss/_style.scss */
+/* line 101, ../scss/_style.scss */
 .profile_picture .imgPlaceholder i {
   color: white;
   font-size: 15em;
 }
 
-/* line 98, ../scss/_style.scss */
+/* line 108, ../scss/_style.scss */
 .story .editable {
   font-weight: 400;
 }
 
-/* line 101, ../scss/_style.scss */
+/* line 111, ../scss/_style.scss */
 .personal_info {
   position: relative;
 }
-/* line 103, ../scss/_style.scss */
+/* line 113, ../scss/_style.scss */
 .personal_info .edit {
   position: absolute;
   top: 0;
@@ -148,20 +230,20 @@ body.view-user_profile_edit #wrap {
   -ms-transition: top .5s ease;
   transition: top .5s ease;
 }
-/* line 135, ../scss/_style.scss */
+/* line 145, ../scss/_style.scss */
 .personal_info h2 {
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-/* line 142, ../scss/_style.scss */
+/* line 152, ../scss/_style.scss */
 footer {
   background: #2c5f85;
   box-shadow: inset 0 5px 5px -3px rgba(0, 0, 0, 0.5);
   color: #e8e8e8;
 }
-/* line 146, ../scss/_style.scss */
+/* line 156, ../scss/_style.scss */
 footer div[class^=span] {
   padding: 10px;
 }

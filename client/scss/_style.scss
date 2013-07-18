@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 // helper for grid
 .show-grid [class^=span]{
   border:1px solid rgba(0,0,0,.4);
@@ -19,24 +18,35 @@ body{
   -webkit-background-size:100%, 100%;
   -moz-background-size:100%, 100%;
   background-repeat: no-repeat;
-  &.view-homepage{
-    background:white
-  }
-  &.view-user_profile #wrap{
-    background: -webkit-radial-gradient(#e74c3c, #c0392b);
-    background: -moz-radial-gradient(#e74c3c, #c0392b);
-    background: -o-radial-gradient(#e74c3c, #c0392b);
-    background: -ms-radial-gradient(#e74c3c, #c0392b);
-    background:radial-gradient(#e74c3c, #c0392b);
-  }
-  &.view-user_profile_edit #wrap{
-    background: -webkit-radial-gradient(#3498db, #2980b9);
-    background: -moz-radial-gradient(#3498db, #2980b9);
-    background: -o-radial-gradient(#3498db, #2980b9);
-    background: -ms-radial-gradient(#3498db, #2980b9);
-    background:radial-gradient(#3498db, #2980b9);
-  }
 }
+
+/*
+*
+* Design by view
+*
+*/
+.view-homepage{
+  background:white
+}
+.view-user_profile #wrap{
+  background: -webkit-radial-gradient(#e74c3c, #c0392b);
+  background: -moz-radial-gradient(#e74c3c, #c0392b);
+  background: -o-radial-gradient(#e74c3c, #c0392b);
+  background: -ms-radial-gradient(#e74c3c, #c0392b);
+  background:radial-gradient(#e74c3c, #c0392b);
+}
+.view-user_profile_edit #wrap{
+  background: -webkit-radial-gradient(#3498db, #2980b9);
+  background: -moz-radial-gradient(#3498db, #2980b9);
+  background: -o-radial-gradient(#3498db, #2980b9);
+  background: -ms-radial-gradient(#3498db, #2980b9);
+  background:radial-gradient(#3498db, #2980b9);
+}
+/*
+*
+* End Design by view
+*
+*/
 
 #wrap {
   min-height: 100%;

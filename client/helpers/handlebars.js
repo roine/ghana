@@ -41,4 +41,10 @@ Handlebars.registerHelper('textarea', function(text){
   text = text.toString();
   text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
   return new Handlebars.SafeString(text);
+});
+
+Handlebars.registerHelper('test', function(){
+  if(typeof mocha === 'undefined')
+    return false;
+  return true;
 })

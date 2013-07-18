@@ -36,13 +36,13 @@ var events = {
 };
 var events_view = $.extend({}, {
   'click .edit': function(){
-    Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
+    Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.user().profile.front_name));
   }
 },events);
 
 var events_edit = $.extend({}, {
   'click .edit': function(){
-    Meteor.Router.to('/'+Meteor.user().profile.front_name);
+    Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
   }
 }, events)
 Template.user_profile.events(events_view);
@@ -112,7 +112,7 @@ function user_updated(error, result){
     });
   }
 
-  Meteor.Router.to('/'+Meteor.user().profile.front_name+'/edit');
+  Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.user().profile.front_name));
 }
 
 function isValidURL(url){
