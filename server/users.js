@@ -1,4 +1,3 @@
-
 Accounts.config({
   sendVerificationEmail:false
 });
@@ -6,7 +5,7 @@ Accounts.config({
 Accounts.onCreateUser(function(options, user) {
   user.profile = options.profile || {};
   user.profile.points = 0;
-  if(options.username) {
+  if(options.username && !user.profile.front_name) {
     user.profile.front_name = options.username;
   }
 
