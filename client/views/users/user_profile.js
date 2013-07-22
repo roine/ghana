@@ -97,6 +97,7 @@ Template.user_profile_edit.rendered = function(){
     success:updateProfile,
     placement:'right',
     source: function(){
+      if(!Adjectives.findOne()) return;
       return Adjectives.findOne().text;
     }
   });
