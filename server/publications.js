@@ -6,17 +6,18 @@ if(!Adjectives.find().count()){
 Meteor.publish("adjectives", function () {
   return Adjectives.find();
 });
-
-Meteor.publish('allUsersButAdmin', function() {
-  return Meteor.users.find({ isAdmin: { $ne: true}}, {fields: {
+var visibility = {};
+visibility.user = {
+  fields: {
     'services': 0,
-    'emails': 0
-  }});
+    'emails': 0,
+    'username': 0
+  }
+};
+Meteor.publish('allUsersButAdmin', function() {
+  return Meteor.users.find({ isAdmin: { $ne: true}}, visibility.user);
 });
 
 Meteor.publish('allAdmin', function() {
-  return Meteor.users.find({ isAdmin: true}, {fields: {
-    'services': 0,
-    'emails': 0
-  }});
+  return Meteor.users.find({ isAdmin: true}, visibility.user);
 });

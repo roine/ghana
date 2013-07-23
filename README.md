@@ -13,6 +13,7 @@ ghana
 
 ##Maybe Resources
 
+ - https://github.com/aarondo/tabulous.js (an awesome tab system)
  - https://github.com/jakiestfu/Snap.js
  - https://github.com/viljamis/responsive-nav.js
  - https://github.com/lokesh/color-thief

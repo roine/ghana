@@ -1,3 +1,10 @@
+'use strict';
+
+/*
+ * Events
+ *
+ */
+
 Template.authTabs.events({
   'click #authTab a': function(event) {
     var self = event.currentTarget;
@@ -10,18 +17,18 @@ Template.sign_up.events({
   'submit #sign_up_form': function(event) {
     var self = event.currentTarget;
     var datas = $(self).serializeArray(),
-    newObj = {};
+      newObj = {};
     event.preventDefault();
-    for(var i in datas){
+    for (var i in datas) {
       newObj[datas[i].name] = datas[i].value;
     }
 
-    if(hasEmptyValue(newObj)) {
+    if (hasEmptyValue(newObj)) {
       openAlert({
-        title:'Error mate!',
-        message:'You didn\'t fill the form correctly, one or more fields are empty!',
-        type:'error',
-        lifetime:5
+        title: 'Error mate!',
+        message: 'You didn\'t fill the form correctly, one or more fields are empty!',
+        type: 'error',
+        lifetime: 5
       });
       return;
     }
@@ -30,17 +37,17 @@ Template.sign_up.events({
       username: newObj.username,
       email: newObj.email,
       password: newObj.password
-    }, function(error){
-      if(error){
+    }, function(error) {
+      if (error) {
         alert(error.reason)
-      }
-      else{
+      } else {
         openAlert({
-          title:'You successfuly subscribed!',
-          message:'We also have logged you in, isn\'t it wonderful?! Took us '+pluralize(Math.round(Math.random()*10), 'engineer'),
-          type:'success',
-          lifetime:10
-        })
+          title: 'You successfuly subscribed!',
+          message: 'We also have logged you in, isn\'t it wonderful?! Took us ' + pluralize(Math.round(Math.random() * 10), 'engineer'),
+          type: 'success',
+          lifetime: 10
+        });
+        Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
       }
     })
   }
@@ -51,71 +58,73 @@ Template.sign_in.events({
 
     var self = event.currentTarget;
     var datas = $(self).serializeArray(),
-    newObj = {};
+      newObj = {};
     event.preventDefault();
-    for(var i in datas){
+    for (var i in datas) {
       newObj[datas[i].name] = datas[i].value;
     }
-    Meteor.loginWithPassword(newObj.id, newObj.password, function(e){
-      if(e){
-        alert(e.message)
-      }
-      else{
-        Meteor.Router.to('/'+Meteor.user().profile.front_name);
+    Meteor.loginWithPassword(newObj.id, newObj.password, function(e) {
+      if (e) {
         openAlert({
-          title:'Bonjour',
-          message:'Hey, welcome back '+capitalize(Meteor.user().profile.front_name)+'!'
-        })
+          title: 'Error',
+          message: e.message,
+          type: 'error'
+        });
+      } else {
+        Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
+        openAlert({
+          title: 'Bonjour',
+          message: 'Hey, welcome back ' + capitalize(Meteor.user().profile.front_name) + '!'
+        });
       }
     })
   },
   'click .login-facebook': function() {
     Meteor.loginWithFacebook({
       requestPermissions: ['email']
-    }, function(err){
-      if(err){
-        Session.set('errorMessage', err.reason || 'Unknown error');
-        openAlert({
-          title:'error',
-          message:err.reason,
-          type:'error'
-        });
-      }
-    });
+    }, oAuthCallback);
+  },
+  'click .login-google': function() {
+    Meteor.loginWithGoogle({}, oAuthCallback);
   },
   'click .login-github': function() {
     Meteor.loginWithGithub({
-      requestPermissions:['user:email']
-    }, function(err) {
-      if(err){
-        Session.set('errorMessage', err.reason || 'Unknown error');
-        openAlert({
-          title:'error',
-          message:err.reason,
-          type:'error'
-        });
-      }
-    });
+      requestPermissions: ['user:email']
+    }, oAuthCallback);
   },
   "click .login-twitter": function() {
-    Meteor.loginWithTwitter({
-    }, function(err) {
-      if(err) {
-        Session.set('errorMessage', err.reason || 'Unknown error');
-        openAlert({
-          title:'error',
-          message:err.reason,
-          type:'error'
-        });
-      }
-    });
+    Meteor.loginWithTwitter({}, oAuthCallback);
+  },
+  'click .login-linkedin': function() {
+    Meteor.loginWithLinkedin({}, oAuthCallback);
   }
 });
+/*
+ * Helpers
+ *
+ */
 Template.explore.helpers({
-  users:function() {
-    return Meteor.users.find({}, {sort:{createdAt:-1}}).fetch();
+  users: function() {
+    return Meteor.users.find({}, {
+      sort: {
+        createdAt: -1
+      }
+    }).fetch();
   },
-  hasUsers:function() {
+  hasUsers: function() {
     return !!Meteor.users.findOne();
   }
-})
+});
+
+function oAuthCallback(err) {
+  if (err) {
+    Session.set('errorMessage', err.reason || 'Unknown error');
+    openAlert({
+      title: 'error',
+      message: err.reason,
+      type: 'error'
+    });
+  } else {
+    Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
+  }
+}

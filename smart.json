@@ -6,6 +6,7 @@
     "moment": {},
     "x-editable-bootstrap": {},
     "font-awesome": {},
-    "mocha-web": {}
+    "mocha-web": {},
+    "accounts-linkedin": {}
   }
 }

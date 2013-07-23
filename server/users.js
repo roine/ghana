@@ -6,6 +6,7 @@ function hookWithGithub(options, user) {
   try{
     user.username = user.services.github.username;
   }catch(e) {}
+  // match the email from withPassword to avoid duplicate emails
   try{
     user.emails = [];
     user.emails.push({address:user.services.github.email, verified:true})
