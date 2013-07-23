@@ -11,6 +11,9 @@ var helpers = {
   isCurrentUser: function(){
     if(!Template.user_profile._tmpl_data.helpers.user()) return false;
     return Template.user_profile._tmpl_data.helpers.user()._id === Meteor.userId();
+  },
+  clean: function(data) {
+    return data.split('_').join(" ")
   }
 }
 
@@ -22,7 +25,7 @@ var events = {
     $('.edit').show();
   },
   'mouseover .personal_info': function() {
-    if(Template.user_profile._tmpl_data.helpers.isCurrentUser()){
+    if(Template.user_profile._tmpl_data.helpers.isCurrentUser() || isAdmin(Meteor.userId())){
       $('.edit').css('top', 0);
     }
   },
@@ -36,13 +39,13 @@ var events = {
 };
 var events_view = $.extend({}, {
   'click .edit': function(){
-    Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.user().profile.front_name));
+    Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.users.find(Session.get('id')).fetch()[0].profile.front_name));
   }
 },events);
 
 var events_edit = $.extend({}, {
   'click .edit': function(){
-    Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
+    Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.users.find(Session.get('id')).fetch()[0].profile.front_name));
   },
   'click #removeAccount': function(){
     openAlert({
@@ -67,7 +70,7 @@ Template.user_profile_edit.rendered = function(){
     return false;
   });
   $('body').on('click', '.deleteAccount', function(){
-    Meteor.users.remove(Meteor.userId(), function(error){
+    Meteor.users.remove(Session.get('id'), function(error){
       if(error) {
         openAlert({
           title:'Error',
@@ -124,7 +127,7 @@ function updateProfile(e, newValue){
       return false;
     }
   }
-  Meteor.users.update(Meteor.userId(), {$set:update}, user_updated);
+  Meteor.users.update(Session.get('id'), {$set:update}, user_updated);
   return newValue;
 }
 
@@ -144,8 +147,7 @@ function user_updated(error, result){
       type: 'success'
     });
   }
-
-  Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.user().profile.front_name));
+  Meteor.Router.to(Meteor.Router.userProfileEditPath(Meteor.users.findOne(Session.get('id')).profile.front_name));
 }
 
 function isValidURL(url){

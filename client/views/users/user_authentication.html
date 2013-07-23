@@ -28,6 +28,18 @@
 
     </fieldset>
   </form>
+  or Login with
+  <div class='oauthWrapper'>
+    <div class='login login-facebook'>
+      Facebook
+    </div>
+    <div class="login login-github">
+      github
+    </div>
+    <div class="login login-twitter">
+      twitter
+    </div>
+  </div>
 </template>
 
 <template name='sign_up'>
@@ -108,7 +120,7 @@
       <tr>
         <td><a href="{{this.profile.front_name}}">{{this.profile.front_name}}</a></td>
         <td>{{this.profile.points}}</td>
-        <td>{{dateToString this.profile.createdAt}}</td>
+        <td data-timestamp={{this.profile.createdAt}}>{{dateToString this.profile.createdAt}}</td>
       </tr>
       {{/each}}
     </tbody>

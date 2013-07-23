@@ -6,7 +6,7 @@ describe "Collection", ->
 
     it "has an array of adjectives with 929 entries", ->
       chai.expect(adj.text).to.be.an('array').with.length(929)
-    # add done parameter for async testing
+
     it "cannot be edited", (done) ->
       # push a value
       Adjectives.update adj._id, $push: text: 'bob', (e) ->
@@ -25,10 +25,10 @@ describe "Collection", ->
     it "cannot remove data", (done) ->
       # need to do something here to cache the data before testing remove
       Adjectives.remove adj._id, (e) ->
-        done(e.message) if e? and e.error is 403
+        done() if e? and e.error is 403
 
 describe "shared lib", ->
-  # using existing users
+  # insert two users, one admin one normal user
   before (done) ->
         window.admin = Meteor.users.insert
           username:'admin',
@@ -42,7 +42,7 @@ describe "shared lib", ->
               password:'123456',
               (e) ->
                 done(e)
-
+  # remove the two users
   after (done) ->
     Meteor.users.remove admin, ->
       Meteor.users.remove user, (e) ->

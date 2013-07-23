@@ -11,7 +11,7 @@
      {{#if isCurrentUser}}
      <div class="edit">Edit Profile</div>
      {{/if}}
-     <h2 class='capitalize editable' data-name='profile.front_name'>{{profile.front_name}}</h2>
+     <h2 class='capitalize editable' data-name='profile.front_name'>{{clean profile.front_name}}</h2>
 
      {{> profile_partial}}
 
@@ -89,7 +89,7 @@
       Points:
     </div>
     <div class="span6">
-      {{profile.points}}
+      {{points}}
     </div>
   </div>
 

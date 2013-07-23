@@ -20,6 +20,7 @@ Meteor.Router.add({
     to: function(slug) {
       if(Meteor.users.findOne({'profile.front_name':slug})){
         Session.set('slug', slug);
+        Session.set('id', Meteor.users.findOne({'profile.front_name':slug})._id)
         addClass('user_profile');
         return 'user_profile';
       }
@@ -30,13 +31,14 @@ Meteor.Router.add({
   '/:userId/edit': {
     as: 'userProfileEdit',
     to: function(slug){
-      if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId()){
+      if(!Meteor.users.findOne({'profile.front_name':slug})){
+        return 'not_found';
+      }
+      if(Meteor.users.findOne({'profile.front_name':slug})._id === Meteor.userId() || isAdmin(Meteor.userId())){
         Session.set('slug', slug);
+        Session.set('id', Meteor.users.findOne({'profile.front_name':slug})._id)
         addClass('user_profile_edit');
         return 'user_profile_edit';
-      }
-      else if(!Meteor.users.findOne({'profile.front_name':slug})){
-        return 'not_found';
       }
       addClass('no_right');
       return 'no_right';

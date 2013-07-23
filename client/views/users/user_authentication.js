@@ -68,6 +68,47 @@ Template.sign_in.events({
         })
       }
     })
+  },
+  'click .login-facebook': function() {
+    Meteor.loginWithFacebook({
+      requestPermissions: ['email']
+    }, function(err){
+      if(err){
+        Session.set('errorMessage', err.reason || 'Unknown error');
+        openAlert({
+          title:'error',
+          message:err.reason,
+          type:'error'
+        });
+      }
+    });
+  },
+  'click .login-github': function() {
+    Meteor.loginWithGithub({
+      requestPermissions:['user:email']
+    }, function(err) {
+      if(err){
+        Session.set('errorMessage', err.reason || 'Unknown error');
+        openAlert({
+          title:'error',
+          message:err.reason,
+          type:'error'
+        });
+      }
+    });
+  },
+  "click .login-twitter": function() {
+    Meteor.loginWithTwitter({
+    }, function(err) {
+      if(err) {
+        Session.set('errorMessage', err.reason || 'Unknown error');
+        openAlert({
+          title:'error',
+          message:err.reason,
+          type:'error'
+        });
+      }
+    });
   }
 });
 Template.explore.helpers({
