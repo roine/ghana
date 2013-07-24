@@ -1,10 +1,7 @@
 Meteor.users.allow({
-  insert:function(){return true;},
-  update:function(userId, doc){
-    return isAdmin(userId) || doc._id && doc._id === userId;
+  insert: function() {
+    return true;
   },
-  remove:function(userId, doc){
-    return isAdmin(userId) || doc._id && doc._id === userId;
-  }
+  update: canI,
+  remove: canI
 });
-

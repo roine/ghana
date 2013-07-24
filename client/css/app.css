@@ -278,51 +278,50 @@ footer div[class^=span] {
   text-shadow: 0 -1px rgba(0, 0, 0, 0.35);
   color: white;
   display: inline-block;
-  background-image: -webkit-radial-gradient(bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  background-image: -moz-radial-gradient(bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  background-image: -o-radial-gradient(bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  background-image: -ms-radial-gradient(bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  background-image: radial-gradient(bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  background-image: -webkit-radial-gradient(bottom right, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
+  background-image: -moz-radial-gradient(bottom right, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
+  background-image: -o-radial-gradient(bottom right, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
+  background-image: -ms-radial-gradient(bottom right, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
+  background-image: radial-gradient(bottom right, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
   -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
-/* line 203, ../scss/_style.scss */
+/* line 206, ../scss/_style.scss */
 .login span {
-  -webkit-transition: all 1s linear;
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -ms-transition: all 1s linear;
-  transition: all 1s linear;
+  -webkit-transition: all 1s .6s linear;
+  -moz-transition: all 1s .6s linear;
+  -o-transition: all 1s .6s linear;
+  -ms-transition: all 1s .6s linear;
+  transition: all 1s .6s linear;
   max-width: 0;
   display: inline-block;
   overflow: hidden;
   height: 35px;
   padding: 2px 0;
 }
-/* line 216, ../scss/_style.scss */
+/* line 219, ../scss/_style.scss */
 .login:hover span {
   padding-left: 25px;
   padding-right: 10px;
   max-width: 200px;
-  overflow: initial;
 }
-/* line 222, ../scss/_style.scss */
+/* line 224, ../scss/_style.scss */
 .login.login-facebook {
   background-color: #3B5998;
 }
-/* line 225, ../scss/_style.scss */
+/* line 227, ../scss/_style.scss */
 .login.login-google {
   background-color: #DC4A39;
 }
-/* line 228, ../scss/_style.scss */
+/* line 230, ../scss/_style.scss */
 .login.login-github {
   background-color: #333;
 }
-/* line 231, ../scss/_style.scss */
+/* line 233, ../scss/_style.scss */
 .login.login-twitter {
   background-color: #499ADB;
 }
-/* line 234, ../scss/_style.scss */
+/* line 236, ../scss/_style.scss */
 .login.login-linkedin {
   background-color: #076A9B;
 }

@@ -30,22 +30,29 @@ describe "Collection", ->
 describe "shared lib", ->
   # insert two users, one admin one normal user
   before (done) ->
-        window.admin = Meteor.users.insert
-          username:'admin',
-          email: 'admin@admin.com',
-          password: '123456',
-          isAdmin: true
-          ->
-            window.user = Meteor.users.insert
-              username:'user',
-              email:'user@user.com',
-              password:'123456',
-              (e) ->
-                done(e)
+    try
+      adminId = Meteor.users.findOne({username:'admin'})._id
+      Meteor.users.remove(adminId)
+      userId = Meteor.users.findOne({username:'user'})._id
+      Meteor.users.remove(userId)
+    catch e
+
+    window.admin = Meteor.users.insert
+      username:'admin',
+      email: 'admin@admin.com',
+      password: '123456',
+      isAdmin: true
+      ->
+        window.user = Meteor.users.insert
+          username:'user',
+          email:'user@user.com',
+          password:'123456',
+          (e) ->
+            done(e)
   # remove the two users
   after (done) ->
-    Meteor.users.remove admin, ->
-      Meteor.users.remove user, (e) ->
+    Meteor.users.remove window.admin, ->
+      Meteor.users.remove window.user, (e) ->
         done(e)
 
   describe "check if the user is admin", ->
@@ -57,4 +64,15 @@ describe "shared lib", ->
       chai.expect(isAdmin("notAdmin")).to.be.false
     it "should return false if the user is not an Admin user", ->
       chai.expect(isAdmin(user)).to.be.false
+
+describe "Take methods", ->
+  it "be on theglobal scope", ->
+    chai.expect(take).to.exist
+  it "should return an array with all the requested data", ->
+    arr = { values: [ { test:{ name:1 } }, { test:{ name:2, bob:{name:3} } } ] }
+    filteredArr = take.each('test.name').from(arr.values)
+    chai.expect(filteredArr).to.be.an('array').with.length(2)
+
+
+
 
