@@ -77,7 +77,7 @@ describe "Take methods", ->
     filteredArr = take.each('test.name').from(arr.values)
     chai.expect(filteredArr).to.be.an('array').with.length(2)
 
-  it "should return a string", ->
+  it "should return a number", ->
     val = take.a('test.name').from(arr)
     chai.expect(val).to.be.a('number').and.equal(5)
 
@@ -88,6 +88,7 @@ describe "Take methods", ->
     chai.expect(val).to.be.a('number').and.equal(5)
     # make sure the two test above are passed
     done()
+
 
 
 
