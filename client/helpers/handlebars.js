@@ -48,4 +48,4 @@ Handlebars.registerHelper('test', function(){
   if(typeof mocha === 'undefined')
     return false;
   return true;
-})
+});

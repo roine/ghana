@@ -58,20 +58,37 @@ describe "shared lib", ->
   describe "check if the user is admin", ->
     it "should return nothing", ->
       chai.expect(isAdmin()).to.be.false
+
     it "should return true for admin", ->
       chai.expect(isAdmin(admin)).to.be.true
+
     it "should return false if id doesnt exists", ->
       chai.expect(isAdmin("notAdmin")).to.be.false
+
     it "should return false if the user is not an Admin user", ->
       chai.expect(isAdmin(user)).to.be.false
 
 describe "Take methods", ->
+  arr = { values: [ { test:{ name:1 } }, { test:{ name:2, bob:{ name:3 } } } ], test: { name:5 } }
   it "be on theglobal scope", ->
     chai.expect(take).to.exist
+
   it "should return an array with all the requested data", ->
-    arr = { values: [ { test:{ name:1 } }, { test:{ name:2, bob:{name:3} } } ] }
     filteredArr = take.each('test.name').from(arr.values)
     chai.expect(filteredArr).to.be.an('array').with.length(2)
+
+  it "should return a string", ->
+    val = take.a('test.name').from(arr)
+    chai.expect(val).to.be.a('number').and.equal(5)
+
+  it "should chain in any order", (done) ->
+    filteredArr = take.from(arr.values).each('test.name')
+    val = take.from(arr).a('test.name')
+    chai.expect(filteredArr).to.be.an('array').with.length(2)
+    chai.expect(val).to.be.a('number').and.equal(5)
+    # make sure the two test above are passed
+    done()
+
 
 
 

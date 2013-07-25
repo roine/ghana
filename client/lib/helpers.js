@@ -22,3 +22,4 @@ closeAlert = function() {
   // 600ms is  the speed of the sliding animation cf: magic.css
   setTimeout(function(){$alert.addClass('hide')},600);
 };
+

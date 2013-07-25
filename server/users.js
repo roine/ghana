@@ -6,20 +6,15 @@ function hookGithub(options, user) {
   user.profile = {};
   try {
     user.username = user.services.github.username;
-  } catch (e) {}
-
-  try {
     user.emails = [];
     user.emails.push({
       address: user.services.github.email,
       verified: true
-    })
-  } catch (e) {}
-
-  try {
+    });
     user.profile.real_name = options.profile.name;
     user.profile.front_name = options.profile.name.split(' ').join('_');
   } catch (e) {}
+  checkUniqueFields(user);
   return user;
 }
 
@@ -44,17 +39,20 @@ function hookLinkedin(options, user) {
       }
     }
   } catch (e) {console.log(e)}
+  checkUniqueFields(user);
 
-  // try {
-  //   user.extra.language = [];
-  //   options.profile.languages.values.each(function(value) {
-  //     user.extra.language.push(value.language.name)
-  //   })
-  // } catch (e) {}
   return user;
 }
 
-
+function checkUniqueFields(user){
+  console.log(uniqueField)
+  for(i in uniqueField.users){
+    field = uniqueField.users[i];
+    value = take.a(field).from(user);
+    console.log(field)
+    console.log(value)
+  }
+}
 Accounts.onCreateUser(function(options, user) {
   user.points = 0;
   // external service login
@@ -74,9 +72,6 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.front_name = options.username.split(' ').join('_');
   }
 
-  // // using +(new Date) will convert the date into integer
-  // // to put it back to string ''+(new Date)
-  // user.profile.createdAt = +(new Date);
   // // set admin for first user
   if (!Meteor.users.findOne()) {
     user.isAdmin = true;
