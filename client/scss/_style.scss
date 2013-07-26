@@ -76,23 +76,15 @@ body{
  * Design by view
  *
  */
+$pages: homepage white, user_profile #e74c3c #c0392b, user_profile_edit #3498db #2980b9;
 
- .view-homepage{
-  background:white
-}
-.view-user_profile #wrap{
-  background: -webkit-radial-gradient(#e74c3c, #c0392b);
-  background: -moz-radial-gradient(#e74c3c, #c0392b);
-  background: -o-radial-gradient(#e74c3c, #c0392b);
-  background: -ms-radial-gradient(#e74c3c, #c0392b);
-  background:radial-gradient(#e74c3c, #c0392b);
-}
-.view-user_profile_edit #wrap{
-  background: -webkit-radial-gradient(#3498db, #2980b9);
-  background: -moz-radial-gradient(#3498db, #2980b9);
-  background: -o-radial-gradient(#3498db, #2980b9);
-  background: -ms-radial-gradient(#3498db, #2980b9);
-  background:radial-gradient(#3498db, #2980b9);
+@each $page in $pages {
+  .view-#{nth($page, 1)} #wrap {
+    background:nth($page, 2);
+    @if(length($page) == 3){
+      @include background(radial-gradient(nth($page, 2), nth($page, 3)))
+    }
+  }
 }
 
 

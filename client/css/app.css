@@ -151,26 +151,28 @@ body {
  * Design by view
  *
  */
-/* line 80, ../scss/_style.scss */
-.view-homepage {
+/* line 82, ../scss/_style.scss */
+.view-homepage #wrap {
   background: white;
 }
 
-/* line 83, ../scss/_style.scss */
+/* line 82, ../scss/_style.scss */
 .view-user_profile #wrap {
+  background: #e74c3c;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #e74c3c), color-stop(100%, #c0392b));
   background: -webkit-radial-gradient(#e74c3c, #c0392b);
   background: -moz-radial-gradient(#e74c3c, #c0392b);
   background: -o-radial-gradient(#e74c3c, #c0392b);
-  background: -ms-radial-gradient(#e74c3c, #c0392b);
   background: radial-gradient(#e74c3c, #c0392b);
 }
 
-/* line 90, ../scss/_style.scss */
+/* line 82, ../scss/_style.scss */
 .view-user_profile_edit #wrap {
+  background: #3498db;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #3498db), color-stop(100%, #2980b9));
   background: -webkit-radial-gradient(#3498db, #2980b9);
   background: -moz-radial-gradient(#3498db, #2980b9);
   background: -o-radial-gradient(#3498db, #2980b9);
-  background: -ms-radial-gradient(#3498db, #2980b9);
   background: radial-gradient(#3498db, #2980b9);
 }
 
@@ -179,7 +181,7 @@ body {
  * Blocks
  *
  */
-/* line 105, ../scss/_style.scss */
+/* line 97, ../scss/_style.scss */
 .profile_picture {
   text-align: center;
   position: relative;
@@ -187,32 +189,32 @@ body {
   z-index: 10;
 }
 @media only screen and (max-width: 766px) {
-  /* line 105, ../scss/_style.scss */
+  /* line 97, ../scss/_style.scss */
   .profile_picture {
     display: none;
   }
 }
-/* line 113, ../scss/_style.scss */
+/* line 105, ../scss/_style.scss */
 .profile_picture .imgPlaceholder {
   background: #D6D6D6;
 }
-/* line 115, ../scss/_style.scss */
+/* line 107, ../scss/_style.scss */
 .profile_picture .imgPlaceholder i {
   color: white;
   font-size: 15em;
   font-size: 15vw;
 }
 
-/* line 124, ../scss/_style.scss */
+/* line 116, ../scss/_style.scss */
 .story .editable {
   font-weight: 400;
 }
 
-/* line 127, ../scss/_style.scss */
+/* line 119, ../scss/_style.scss */
 .personal_info {
   position: relative;
 }
-/* line 129, ../scss/_style.scss */
+/* line 121, ../scss/_style.scss */
 .personal_info .edit {
   position: absolute;
   top: 0;
@@ -241,20 +243,20 @@ body {
   -ms-transition: top .5s ease;
   transition: top .5s ease;
 }
-/* line 161, ../scss/_style.scss */
+/* line 153, ../scss/_style.scss */
 .personal_info h2 {
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-/* line 168, ../scss/_style.scss */
+/* line 160, ../scss/_style.scss */
 footer {
   background: #2c5f85;
   box-shadow: inset 0 5px 5px -3px rgba(0, 0, 0, 0.5);
   color: #e8e8e8;
 }
-/* line 172, ../scss/_style.scss */
+/* line 164, ../scss/_style.scss */
 footer div[class^=span] {
   padding: 10px;
 }
@@ -264,7 +266,7 @@ footer div[class^=span] {
  * Elements
  *
  */
-/* line 182, ../scss/_style.scss */
+/* line 174, ../scss/_style.scss */
 .login {
   cursor: pointer;
   font-weight: bold;
@@ -286,7 +288,7 @@ footer div[class^=span] {
   -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
-/* line 206, ../scss/_style.scss */
+/* line 198, ../scss/_style.scss */
 .login span {
   -webkit-transition: all 1s .6s linear;
   -moz-transition: all 1s .6s linear;
@@ -299,29 +301,29 @@ footer div[class^=span] {
   height: 35px;
   padding: 2px 0;
 }
-/* line 219, ../scss/_style.scss */
+/* line 211, ../scss/_style.scss */
 .login:hover span {
   padding-left: 25px;
   padding-right: 10px;
   max-width: 200px;
 }
-/* line 224, ../scss/_style.scss */
+/* line 216, ../scss/_style.scss */
 .login.login-facebook {
   background-color: #3B5998;
 }
-/* line 227, ../scss/_style.scss */
+/* line 219, ../scss/_style.scss */
 .login.login-google {
   background-color: #DC4A39;
 }
-/* line 230, ../scss/_style.scss */
+/* line 222, ../scss/_style.scss */
 .login.login-github {
   background-color: #333;
 }
-/* line 233, ../scss/_style.scss */
+/* line 225, ../scss/_style.scss */
 .login.login-twitter {
   background-color: #499ADB;
 }
-/* line 236, ../scss/_style.scss */
+/* line 228, ../scss/_style.scss */
 .login.login-linkedin {
   background-color: #076A9B;
 }

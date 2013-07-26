@@ -7,7 +7,7 @@ Template.notification.events({
 Template.loggedInBar.events({
   'click navbar a': function(event){
     var self = event.currentTarget;
-    $(self).addClass('active')
+    $(self).addClass('active');
   },
   'click .logout': function(){
     Meteor.logout();

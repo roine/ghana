@@ -1,4 +1,4 @@
-'use strict';
+
 
 /*
  * Events
@@ -39,7 +39,7 @@ Template.sign_up.events({
       password: newObj.password
     }, function(error) {
       if (error) {
-        alert(error.reason)
+        alert(error.reason);
       } else {
         openAlert({
           title: 'You successfuly subscribed!',
@@ -49,7 +49,7 @@ Template.sign_up.events({
         });
         Meteor.Router.to(Meteor.Router.userProfilePath(Meteor.user().profile.front_name));
       }
-    })
+    });
   }
 });
 
@@ -77,7 +77,7 @@ Template.sign_in.events({
           message: 'Hey, welcome back ' + capitalize(Meteor.user().profile.front_name) + '!'
         });
       }
-    })
+    });
   },
   'click .login-facebook': function() {
     Meteor.loginWithFacebook({

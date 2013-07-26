@@ -49,9 +49,9 @@ function hookLinkedin(options, user) {
         skills: take.each('skill.name').from(options.profile.skills.values),
         front_name_cap: name.split(' ').join('_').toUpperCase()
       }
-    }
+    };
     _.extend(user, userEdit);
-  } catch (e) {console.log(e)}
+  } catch (e) {console.log(e);}
 
 
   return user;
@@ -92,6 +92,7 @@ Accounts.validateNewUser(function(user){
 
 function checkUniqueFields(user){
   var find = {};
+  var i;
   for(i in uniqueField.users){
     field = uniqueField.users[i];
     value = take.a(field).from(user);

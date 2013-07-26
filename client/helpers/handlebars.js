@@ -27,7 +27,7 @@ Handlebars.registerHelper('aOrAn', function(data){
     return 'an '+data;
   }
 
-  return 'a '+data
+  return 'a '+data;
 });
 
 Handlebars.registerHelper('url', function(url){

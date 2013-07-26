@@ -1,5 +1,3 @@
-'use strict';
-
 var helpers = {
   user:function(){
     var user = Meteor.users.find({'profile.front_name':Session.get('slug')}).fetch();
@@ -13,9 +11,9 @@ var helpers = {
     return Template.user_profile._tmpl_data.helpers.user()._id === Meteor.userId();
   },
   clean: function(data) {
-    return data.split('_').join(" ")
+    return data.split('_').join(" ");
   }
-}
+};
 
 Template.user_profile.helpers(helpers);
 Template.user_profile_edit.helpers(helpers);
@@ -34,7 +32,7 @@ var events = {
   },
   'hidden [data-type=wysihtml5]': function(e) {
     $('.left-sidebar').toggleClass('span3 span4');
-    $('.content').toggleClass('span9 span9')
+    $('.content').toggleClass('span9 span9');
   }
 };
 var events_view = $.extend({}, {
@@ -54,7 +52,7 @@ var events_edit = $.extend({}, {
       lifetime:30000
     });
   }
-}, events)
+}, events);
 Template.user_profile.events(events_view);
 Template.user_profile_edit.events(events_edit);
 
@@ -95,7 +93,7 @@ Template.user_profile_edit.rendered = function(){
 
   $('.editable').tooltip({
     placement:'top'
-  })
+  });
   $('#feelings').editable({
     success:updateProfile,
     placement:'right',
@@ -106,9 +104,7 @@ Template.user_profile_edit.rendered = function(){
   });
   $('.editable').editable({success:updateProfile, placement:'right'});
   $('.editable.url').editable('option', 'validate', isValidURL);
-
-
-}
+};
 
 function updateProfile(e, newValue){
   var name = $(this).data('name');
